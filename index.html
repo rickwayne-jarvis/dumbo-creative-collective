@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#0F0E0A;--surface:#1A1812;--card:#1E1C16;--card-hover:#252318;
@@ -205,6 +206,7 @@ img{display:block;max-width:100%}
 .footer-sep{color:var(--border);margin:0 12px}
 
 @keyframes cardIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
 </style>
 </head>
 <body>
@@ -212,77 +214,42 @@ img{display:block;max-width:100%}
 <!-- ═══ BRONZE ELEVATION MAP ═══ -->
 <div class="bronze-map" id="bronzeMap">
 <svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <!-- Contour/elevation lines -->
   <g class="map-contours" stroke="#C4A265" stroke-width=".4" opacity=".06">
-    <ellipse cx="500" cy="380" rx="420" ry="240" /><ellipse cx="500" cy="380" rx="360" ry="200" />
-    <ellipse cx="500" cy="380" rx="300" ry="160" /><ellipse cx="500" cy="380" rx="240" ry="120" />
-    <ellipse cx="500" cy="380" rx="180" ry="80" /><ellipse cx="500" cy="380" rx="120" ry="50" />
+    <ellipse cx="500" cy="380" rx="420" ry="240"/><ellipse cx="500" cy="380" rx="360" ry="200"/>
+    <ellipse cx="500" cy="380" rx="300" ry="160"/><ellipse cx="500" cy="380" rx="240" ry="120"/>
+    <ellipse cx="500" cy="380" rx="180" ry="80"/><ellipse cx="500" cy="380" rx="120" ry="50"/>
   </g>
-  <!-- Street grid (DUMBO layout) -->
   <g class="map-streets" stroke="#C4A265" stroke-width=".6" opacity=".05">
-    <!-- Washington St (horizontal) -->
-    <line x1="280" y1="320" x2="720" y2="320"/>
-    <!-- Front St -->
-    <line x1="280" y1="360" x2="720" y2="360"/>
-    <!-- Water St -->
-    <line x1="280" y1="400" x2="720" y2="400"/>
-    <!-- Plymouth St -->
-    <line x1="280" y1="440" x2="720" y2="440"/>
-    <!-- Main St (vertical) -->
-    <line x1="400" y1="260" x2="400" y2="480"/>
-    <!-- Jay St -->
-    <line x1="340" y1="260" x2="340" y2="480"/>
-    <!-- Bridge St -->
-    <line x1="460" y1="260" x2="460" y2="480"/>
-    <!-- Gold St -->
-    <line x1="520" y1="260" x2="520" y2="480"/>
-    <!-- Pearl St -->
-    <line x1="580" y1="280" x2="580" y2="480"/>
-    <!-- Anchorage Pl -->
-    <line x1="640" y1="300" x2="640" y2="460"/>
+    <line x1="280" y1="320" x2="720" y2="320"/><line x1="280" y1="360" x2="720" y2="360"/>
+    <line x1="280" y1="400" x2="720" y2="400"/><line x1="280" y1="440" x2="720" y2="440"/>
+    <line x1="400" y1="260" x2="400" y2="480"/><line x1="340" y1="260" x2="340" y2="480"/>
+    <line x1="460" y1="260" x2="460" y2="480"/><line x1="520" y1="260" x2="520" y2="480"/>
+    <line x1="580" y1="280" x2="580" y2="480"/><line x1="640" y1="300" x2="640" y2="460"/>
   </g>
-  <!-- Waterfront edge -->
   <g class="map-waterfront" stroke="#C4A265" stroke-width="1.2" opacity=".06">
     <path d="M220,260 C300,240 420,230 560,240 C640,245 720,260 800,290" stroke-linecap="round"/>
-    <path d="M220,258 C300,238 420,228 560,238 C640,243 720,258 800,288" stroke-width=".4" opacity=".5"/>
   </g>
-  <!-- Manhattan Bridge -->
   <g class="map-bridges" stroke="#C4A265" opacity=".07">
-    <!-- Bridge deck -->
     <line x1="400" y1="230" x2="400" y2="100" stroke-width="2.5"/>
-    <!-- Bridge approach from DUMBO -->
-    <path d="M380,260 L380,230 L420,230 L420,260" stroke-width=".8" fill="none"/>
-    <!-- Tower 1 -->
     <rect x="390" y="200" width="20" height="35" stroke-width="1" fill="none"/>
-    <!-- Tower 2 -->
     <rect x="390" y="120" width="20" height="30" stroke-width="1" fill="none"/>
-    <!-- Cables -->
     <path d="M395,200 Q400,165 405,200" stroke-width=".5" fill="none"/>
-    <path d="M395,200 Q400,150 405,200" stroke-width=".3" fill="none"/>
     <path d="M395,120 Q400,85 405,120" stroke-width=".5" fill="none"/>
   </g>
-  <!-- Brooklyn Bridge (further south, lighter) -->
   <g class="map-bridges" stroke="#C4A265" opacity=".04">
     <line x1="650" y1="350" x2="750" y2="200" stroke-width="2"/>
     <rect x="670" y="310" width="14" height="25" stroke-width=".8" fill="none"/>
     <rect x="720" y="230" width="14" height="25" stroke-width=".8" fill="none"/>
-    <path d="M674,310 Q684,275 694,310" stroke-width=".4" fill="none"/>
   </g>
-  <!-- Building footprints -->
   <g class="map-buildings" stroke="#C4A265" stroke-width=".5" opacity=".04">
     <rect x="345" y="325" width="50" height="30" rx="1"/><rect x="405" y="325" width="50" height="30" rx="1"/>
     <rect x="465" y="325" width="50" height="30" rx="1"/><rect x="345" y="365" width="50" height="30" rx="1"/>
     <rect x="405" y="365" width="50" height="30" rx="1"/><rect x="465" y="365" width="50" height="30" rx="1"/>
     <rect x="525" y="325" width="50" height="30" rx="1"/><rect x="525" y="365" width="50" height="30" rx="1"/>
-    <rect x="345" y="405" width="50" height="30" rx="1"/><rect x="405" y="405" width="50" height="30" rx="1"/>
-    <rect x="465" y="405" width="50" height="30" rx="1"/><rect x="525" y="405" width="50" height="30" rx="1"/>
-    <rect x="585" y="330" width="45" height="25" rx="1"/><rect x="585" y="365" width="45" height="25" rx="1"/>
   </g>
-  <!-- 55 Washington marker -->
   <g class="map-marker map-glow">
     <circle cx="435" cy="340" r="6" stroke="#C4A265" stroke-width="1" fill="none" opacity=".2"/>
     <circle cx="435" cy="340" r="3" fill="#C4A265" opacity=".15"/>
-    <circle cx="435" cy="340" r="10" stroke="#C4A265" stroke-width=".3" fill="none" opacity=".1"/>
   </g>
 </svg>
 </div>
@@ -295,13 +262,13 @@ img{display:block;max-width:100%}
     <div class="hero-eyebrow">Est. 2011 &nbsp;/&nbsp; Brooklyn, New York</div>
     <h1><span class="h1-top">DUMBO</span><span class="h1-bot">Creative Collective</span></h1>
     <p class="hero-copy">The private creative network for Brooklyn's most iconic neighborhood. Agencies, studios, filmmakers, architects, and artists&thinsp;&mdash;&thinsp;connected by cobblestone, ambition, and the best work happening anywhere in New York.</p>
-    <a href="#directory" class="hero-cta">Explore the Collective</a>
+    <a href="directory.html" class="hero-cta">Explore the Directory</a>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
 </section>
 
 <!-- Bridge divider -->
-<div style="background:var(--bg);padding:32px 0;text-align:center;overflow:hidden">
+<div style="background:var(--bg);padding:32px 0;text-align:center;overflow:hidden;position:relative;z-index:1">
   <svg viewBox="0 0 1200 80" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:min(90%,900px);height:60px;color:var(--gold);opacity:.12" preserveAspectRatio="xMidYMid meet">
     <rect x="0" y="68" width="1200" height="4" fill="currentColor"/>
     <rect x="330" y="10" width="18" height="62" fill="currentColor"/><polygon points="330,10 339,0 348,10" fill="currentColor"/>
@@ -309,13 +276,6 @@ img{display:block;max-width:100%}
     <path d="M334,28 Q339,22 344,28 L344,40 L334,40Z" fill="var(--bg)"/><path d="M334,46 Q339,40 344,46 L344,58 L334,58Z" fill="var(--bg)"/>
     <path d="M856,28 Q861,22 866,28 L866,40 L856,40Z" fill="var(--bg)"/><path d="M856,46 Q861,40 866,46 L866,58 L856,58Z" fill="var(--bg)"/>
     <path d="M0,70 Q339,12 600,48 Q861,12 1200,70" stroke="currentColor" stroke-width="2" fill="none"/>
-    <path d="M150,70 Q339,16 600,50 Q861,16 1050,70" stroke="currentColor" stroke-width="1" fill="none"/>
-    <line x1="420" y1="40" x2="420" y2="68" stroke="currentColor" stroke-width=".8"/>
-    <line x1="500" y1="30" x2="500" y2="68" stroke="currentColor" stroke-width=".8"/>
-    <line x1="570" y1="24" x2="570" y2="68" stroke="currentColor" stroke-width=".8"/>
-    <line x1="630" y1="24" x2="630" y2="68" stroke="currentColor" stroke-width=".8"/>
-    <line x1="700" y1="30" x2="700" y2="68" stroke="currentColor" stroke-width=".8"/>
-    <line x1="780" y1="40" x2="780" y2="68" stroke="currentColor" stroke-width=".8"/>
   </svg>
 </div>
 
@@ -325,21 +285,10 @@ img{display:block;max-width:100%}
     <div class="about-eyebrow">The Neighborhood</div>
     <h2>A District Built by Creatives</h2>
     <p>DUMBO didn't become Brooklyn's creative capital by accident. From the warehouses that drew the first artists in the '70s to the agencies, studios, and startups that fill its cobblestone streets today, this neighborhood runs on creative energy. Etsy started here. Spike Lee built his ad agency here. The world's best architects, filmmakers, and designers chose these blocks for a reason.</p>
-    <p>DCC is how you tap into it. A private network connecting the agencies, production houses, architecture studios, and independent artists across DUMBO. Your next collaborator isn't across town. They're across the street. This is the only creative directory that matters in Brooklyn.</p>
+    <p>DCC is how you tap into it. A private network connecting the agencies, production houses, architecture studios, and independent artists across DUMBO. Your next collaborator isn't across town. They're across the street.</p>
   </div>
   <div class="about-img"></div>
 </section>
-
-<!-- Cobblestone texture divider -->
-<div style="background:var(--bg);padding:24px 0;text-align:center">
-  <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:12px;color:var(--gold);opacity:.15" preserveAspectRatio="xMidYMid meet">
-    <line x1="0" y1="10" x2="170" y2="10" stroke="currentColor" stroke-width=".5"/>
-    <circle cx="185" cy="10" r="3" stroke="currentColor" stroke-width=".5" fill="none"/>
-    <circle cx="200" cy="10" r="4" stroke="currentColor" stroke-width=".7" fill="none"/>
-    <circle cx="215" cy="10" r="3" stroke="currentColor" stroke-width=".5" fill="none"/>
-    <line x1="230" y1="10" x2="400" y2="10" stroke="currentColor" stroke-width=".5"/>
-  </svg>
-</div>
 
 <!-- ═══ EVENTS ═══ -->
 <section class="events">
@@ -348,35 +297,15 @@ img{display:block;max-width:100%}
     <h2>What's Happening</h2>
     <p class="events-sub">Exclusive gatherings, rooftop sessions, and creative salons&thinsp;&mdash;&thinsp;curated for members of the collective.</p>
     <div class="events-grid">
-      <div class="event-card">
-        <h3>Rooftop Sessions</h3>
-        <p>Monthly creative mixer on the DUMBO waterfront. Manhattan skyline views. Invitation only.</p>
-      </div>
-      <div class="event-card">
-        <h3>Office Hours</h3>
-        <p>Drop in with DUMBO's top creative directors. Get feedback, make connections, find your next collaborator.</p>
-      </div>
-      <div class="event-card">
-        <h3>DUMBO First Fridays</h3>
-        <p>Gallery walks, open studios, and after-hours with the neighborhood's artists and makers.</p>
-      </div>
+      <div class="event-card"><h3>Rooftop Sessions</h3><p>Monthly creative mixer on the DUMBO waterfront. Manhattan skyline views. Invitation only.</p></div>
+      <div class="event-card"><h3>Office Hours</h3><p>Drop in with DUMBO's top creative directors. Get feedback, make connections, find your next collaborator.</p></div>
+      <div class="event-card"><h3>DUMBO First Fridays</h3><p>Gallery walks, open studios, and after-hours with the neighborhood's artists and makers.</p></div>
     </div>
     <div class="events-cta-wrap"><a href="#" class="events-cta">Join the Waitlist</a></div>
   </div>
 </section>
 
-<!-- Bridge icon divider -->
-<div style="background:var(--bg);padding:24px 0;text-align:center">
-  <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:12px;color:var(--gold);opacity:.15" preserveAspectRatio="xMidYMid meet">
-    <line x1="0" y1="10" x2="170" y2="10" stroke="currentColor" stroke-width=".5"/>
-    <circle cx="185" cy="10" r="3" stroke="currentColor" stroke-width=".5" fill="none"/>
-    <circle cx="200" cy="10" r="4" stroke="currentColor" stroke-width=".7" fill="none"/>
-    <circle cx="215" cy="10" r="3" stroke="currentColor" stroke-width=".5" fill="none"/>
-    <line x1="230" y1="10" x2="400" y2="10" stroke="currentColor" stroke-width=".5"/>
-  </svg>
-</div>
-
-<!-- ═══ JOIN / REMOVE ═══ -->
+<!-- ═══ JOIN ═══ -->
 <section class="join-section">
   <div class="join-inner">
     <div class="join-text">
@@ -384,588 +313,46 @@ img{display:block;max-width:100%}
       <h2 style="font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:300;font-style:italic;color:var(--cream);margin-bottom:20px;line-height:1.15">Join the Collective</h2>
       <p style="font-size:14px;font-weight:300;color:var(--cream-dim);line-height:1.85;margin-bottom:12px">If you're a creative company, studio, or independent artist based in DUMBO, you belong here. Membership is free, curated, and open to the agencies, architects, filmmakers, designers, and makers who define this neighborhood.</p>
       <p style="font-size:14px;font-weight:300;color:var(--cream-dim);line-height:1.85;margin-bottom:32px">Tell us who you are and what you do. We'll add you to the directory within 48 hours.</p>
-      <a href="mailto:dumbocreativecollective@gmail.com?subject=DCC%20Membership%20Request&body=Company%20/%20Studio%20Name:%0AContact%20Name:%0AEmail:%0APhone:%0AWebsite:%0AAddress%20in%20DUMBO:%0AWhat%20You%20Do%20(1-2%20sentences):%0AKey%20People%20(names%20%26%20titles):%0A%0AAnything%20else%20we%20should%20know:" class="events-cta" style="display:inline-block">Request Membership</a>
+      <a href="mailto:dumbocreativecollective@gmail.com?subject=DCC%20Membership%20Request&body=Company%20/%20Studio%20Name:%0AContact%20Name:%0AEmail:%0APhone:%0AWebsite:%0AAddress%20in%20DUMBO:%0AWhat%20You%20Do%20(1-2%20sentences):%0AKey%20People%20(names%20%26%20titles):" class="events-cta" style="display:inline-block">Request Membership</a>
     </div>
     <div class="join-visual">
       <div class="join-card">
         <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);margin-bottom:16px;line-height:1">DCC</div>
         <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:24px">Member Application</div>
-        <div class="join-field-group">
-          <div class="join-field-label">Company Name</div>
-          <div class="join-field-line"></div>
-        </div>
-        <div class="join-field-group">
-          <div class="join-field-label">Discipline</div>
-          <div class="join-field-line"></div>
-        </div>
-        <div class="join-field-group">
-          <div class="join-field-label">DUMBO Address</div>
-          <div class="join-field-line"></div>
-        </div>
-        <div class="join-field-group">
-          <div class="join-field-label">Website</div>
-          <div class="join-field-line"></div>
-        </div>
+        <div class="join-field-group"><div class="join-field-label">Company Name</div><div class="join-field-line"></div></div>
+        <div class="join-field-group"><div class="join-field-label">Discipline</div><div class="join-field-line"></div></div>
+        <div class="join-field-group"><div class="join-field-label">DUMBO Address</div><div class="join-field-line"></div></div>
+        <div class="join-field-group"><div class="join-field-label">Website</div><div class="join-field-line"></div></div>
         <div style="margin-top:28px;font-family:var(--serif);font-size:13px;font-style:italic;color:var(--muted)">Curated membership. No fees. Ever.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ DIRECTORY ═══ -->
-<section id="directory">
-  <div class="dir-intro">
-    <h2>Members Directory</h2>
-    <div class="dir-rule"></div>
-  </div>
-
-  <div style="height:40px"></div>
-
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="topbar-brand">DCC</div>
-      <div class="search-wrap"><input type="text" id="searchInput" placeholder="Search members..." autocomplete="off" spellcheck="false"></div>
-    </div>
-  </div>
-
-  <nav class="cat-nav-wrap">
-    <div class="cat-nav-inner">
-      <div class="cat-nav" id="catNav"></div>
-      <div class="dash-row">
-        <div class="floor-row" id="floorRow"><span class="floor-label">Floor</span></div>
-        <div class="count-bar" id="countBar"></div>
-      </div>
-    </div>
-  </nav>
-
-  <div class="grid-wrap">
-    <div class="grid" id="grid"></div>
-    <div class="no-results" id="noResults" style="display:none"><span>No members found</span>Try adjusting your search or filter.</div>
-  </div>
+<!-- ═══ DIRECTORY CTA ═══ -->
+<section style="background:var(--bg);position:relative;z-index:1;padding:80px 32px;text-align:center;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--serif);font-size:clamp(24px,3.5vw,38px);font-weight:300;font-style:italic;color:var(--cream);margin-bottom:12px">Ready to connect?</h2>
+  <p style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--cream-dim);margin-bottom:32px;font-weight:300">Browse the full directory of DUMBO's creative community.</p>
+  <a href="directory.html" class="events-cta" style="display:inline-block">Enter the Directory</a>
 </section>
 
 <footer class="site-footer">
   <div class="footer-brand">DUMBO <em>Creative Collective</em></div>
   <div class="footer-addr">DUMBO, Brooklyn NY 11201<br>The Creative Network for Brooklyn's Most Iconic Neighborhood</div>
   <div class="footer-links">
-    <a href="mailto:dumbocreativecollective@gmail.com?subject=DCC%20Membership%20Request&body=Company%20/%20Studio%20Name:%0AContact%20Name:%0AEmail:%0AWebsite:%0AWhat%20You%20Do:" class="footer-link">Join the Collective</a>
+    <a href="mailto:dumbocreativecollective@gmail.com?subject=DCC%20Membership%20Request" class="footer-link">Join the Collective</a>
     <span class="footer-sep">&middot;</span>
     <a href="mailto:dumbocreativecollective@gmail.com?subject=DCC%20Removal%20Request&body=Company%20Name:%0AContact%20Name:%0AEmail:%0A%0APlease%20remove%20us%20from%20the%20DCC%20directory." class="footer-link">Request Removal</a>
+    <span class="footer-sep">&middot;</span>
+    <a href="directory.html" class="footer-link">Directory</a>
   </div>
 </footer>
 
-<!-- ═══ MODAL ═══ -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-panel" id="modalPanel">
-    <div class="modal-scroll" id="modalScroll">
-      <div class="modal-header" id="modalHeader"></div>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-    <div class="modal-footer" id="modalFooter"></div>
-  </div>
-</div>
-
 <script>
-const companies = [
-{"id":0,"name":"Brand Imagination Group (BiG)","suite":"650","floor":"6","tags":["agency","production","creative","brand","advertising"],"description":"Hybrid creative agency and production company. Full-service brand strategy, integrated creative, and cinematic production under one roof. Cannes-caliber creative with production capability baked in.","website":"https://gobig.nyc/","phone":"","email":"","linkedin":"https://www.linkedin.com/company/brand-imagination-group","instagram":"","people":[{"name":"Rick Wayne","title":"Executive Creative Director"},{"name":"Barry Krause","title":"CEO, former CEO of Publicis North America"},{"name":"Samuel Lucas Gove","title":"Design Director"}],"domain":"gobig.nyc","notableClients":"Sharpie, Graco, Paper Mate, NUK, Disney/Mufasa, CenturyLink/NFL, Warner Bros","notableWork":"","hours":""},
-{"id":1,"name":"Sn\u00f8hetta","suite":"900","floor":"9","tags":["architecture","design","landscape","interior design"],"description":"International integrated architecture and design studio spanning architecture, landscape, interior architecture, product design, and digital design. Relocated NYC HQ from Manhattan to DUMBO in 2025.","website":"https://www.snohetta.com/","phone":"(646) 383-4762","email":"contact@snohetta.com","linkedin":"https://www.linkedin.com/company/snohetta","instagram":"","people":[{"name":"Kjetil Tr\u00e6dal Thorsen","title":"Founder & Partner"},{"name":"Craig Dykers","title":"Co-Founder & Partner"},{"name":"Isabella Alveberg","title":"Group CEO"},{"name":"Elaine Molinar","title":"Managing Director, Brooklyn"}],"domain":"snohetta.com","notableClients":"","notableWork":"Norwegian National Opera & Ballet (Oslo), 9/11 Memorial Museum Pavilion (NYC), Bibliotheca Alexandrina (Egypt), SFMOMA Expansion, Times Square redesign, Under (Europe\u2019s first underwater restaurant)","hours":""},
-{"id":2,"name":"Big Spaceship (SPCSHP)","suite":"512","floor":"5","tags":["agency","digital","creative","strategy","design"],"description":"Digital creative agency specializing in digital strategy, design, data analytics, and integrated marketing communications. Acquired by MSQ in October 2024.","website":"https://www.bigspaceship.com/","phone":"(718) 222-0281","email":"info@bigspaceship.com","linkedin":"https://www.linkedin.com/company/bigspaceship","instagram":"","people":[{"name":"Michael Lebowitz","title":"Co-Founder & CEO"},{"name":"Harry Garcia","title":"Executive Design Director"}],"domain":"bigspaceship.com","notableClients":"Nike, Ford, Target, Gucci, Google/YouTube, Starbucks, MoMA, JetBlue, Samsung, BMW","notableWork":"","hours":""},
-{"id":3,"name":"Story Syndicate","suite":"655/656","floor":"6","tags":["production","documentary","film","media"],"description":"Documentary film and television production company; also launched a scripted division in 2023. Known for award-winning docs on Netflix, HBO, and major streamers.","website":"https://www.storysyndicate.com/","phone":"(718) 230-5111","email":"info@storysyndicate.com","linkedin":"https://www.linkedin.com/company/storysyndicate","instagram":"","people":[{"name":"Liz Garbus","title":"Co-Founder & Director, 2x Oscar nominee, 2x Emmy winner"},{"name":"Dan Cogan","title":"Co-Founder, Oscar & Emmy winner"},{"name":"Nellie Reed","title":"Head of Scripted Division"}],"domain":"storysyndicate.com","notableClients":"","notableWork":"Harry & Meghan (Netflix), All In: The Fight for Democracy, Fauci, Becoming Cousteau, The Innocence Files (Netflix), I\u2019ll Be Gone in the Dark (HBO)","hours":""},
-{"id":4,"name":"Invisible North","suite":"450","floor":"4","tags":["agency","experiential","brand","events","production"],"description":"Female-owned global brand experience agency specializing in experiential marketing, events, film, content, and creative media. Approximately 70 people.","website":"https://invisiblenorth.com/","phone":"(212) 603-9171","email":"hello@invisiblenorth.com","linkedin":"https://www.linkedin.com/company/invisible-north","instagram":"","people":[{"name":"Geoff Renaud","title":"Founder & CEO"},{"name":"Joshua Wexler","title":"Co-Founder"},{"name":"Zo\u00e9 Ganch","title":"Co-Founder / EVP"}],"domain":"invisiblenorth.com","notableClients":"Intuit Mailchimp, Google Pixel (NBA All-Star Week)","notableWork":"","hours":""},
-{"id":5,"name":"Foundation PR","suite":"4th Floor","floor":"4","tags":["PR","communications","beauty","lifestyle","talent"],"description":"Communications agency providing strategy and talent management for beauty, lifestyle, fashion, and wellness brands and personalities. Formerly KFD Public Relations.","website":"https://www.wearefoundation.co/","phone":"","email":"","linkedin":"https://www.linkedin.com/company/foundation-comms","instagram":"","people":[],"domain":"wearefoundation.co","notableClients":"","notableWork":"","hours":""},
-{"id":6,"name":"The Fader","suite":"908","floor":"9","tags":["media","music","publishing","events","brand"],"description":"Influential music and culture publication covering emerging artists from underground to mainstream. Also operates Fader Films (video production) and live brand activations including the legendary Fader Fort.","website":"https://www.thefader.com/","phone":"(212) 741-7100","email":"pr@thefader.com","linkedin":"https://www.linkedin.com/company/thefader","instagram":"","people":[{"name":"Jon Cohen","title":"Co-Founder & CEO"},{"name":"Naomi Zeichner","title":"Editor in Chief"},{"name":"Rob Stone","title":"Co-Founder (Cornerstone Agency)"}],"domain":"thefader.com","notableClients":"","notableWork":"Fader Fort at SXSW (legendary brand activation series), brand partnerships with Sprite and Vitamin Water","hours":""},
-{"id":7,"name":"Amplify Education","suite":"Floor 8","floor":"8","tags":["tech","education","edtech","curriculum"],"description":"Leading K-12 education technology and curriculum company providing next-generation curriculum, formative assessments, and professional development. Serves 21,000+ schools across all 50 states.","website":"https://amplify.com/","phone":"(212) 213-8177","email":"","linkedin":"https://www.linkedin.com/company/amplifyinc","instagram":"","people":[{"name":"Larry Berger","title":"CEO & Co-Founder"},{"name":"Catherine MacKay","title":"President & COO"},{"name":"Aaron Harnly","title":"CTO"},{"name":"Kay Moffett","title":"CMO"}],"domain":"amplify.com","notableClients":"","notableWork":"","hours":""},
-{"id":8,"name":"Seen Group","suite":"420","floor":"4","tags":["PR","beauty","creative","influencer","brand"],"description":"Industry-leading beauty specialist collective offering strategy, creative, communications, and influencer marketing. Divisions include Beauty SEEN, SEEN Works (creative), and Community X SEEN. Global agency with staff across 6 continents.","website":"https://www.seengroup.com/","phone":"+44 (0)207 1869 800","email":"hello@seengroup.com","linkedin":"https://www.linkedin.com/company/seen-group","instagram":"","people":[{"name":"Jane Walsh","title":"CEO"}],"domain":"seengroup.com","notableClients":"","notableWork":"","hours":""},
-{"id":9,"name":"White Architecture Studio","suite":"710","floor":"7","tags":["architecture","design","residential","hospitality"],"description":"Boutique architecture studio specializing in residential, institutional, hospitality, and retail architecture. Founded 2011 by Steven Martin White, AIA, formerly of Safdie Architects.","website":"https://whitearchstudio.com/","phone":"(718) 924-2303","email":"","linkedin":"https://www.linkedin.com/company/white-architecture-studio","instagram":"","people":[{"name":"Steven Martin White, AIA","title":"Founder & Principal Architect, 30 years experience"}],"domain":"whitearchstudio.com","notableClients":"","notableWork":"City Library (Salt Lake City), Khalsa Museum (Punjab, India), Yad Vashem Holocaust Remembrance Center (Jerusalem)","hours":""},
-{"id":10,"name":"The Future Forward","suite":"312A","floor":"3","tags":["agency","design","web","branding","digital"],"description":"Creative agency specializing in branding, web design, web development, and digital innovation. Part of Multiplica since 2022.","website":"https://thefutureforward.com/","phone":"(347) 946-2685","email":"hello@thefutureforward.com","linkedin":"https://www.linkedin.com/company/thefutureforward","instagram":"","people":[],"domain":"thefutureforward.com","notableClients":"Nike, Pepsi, Rogers Partners Architects, Morris Adjmi Architects","notableWork":"","hours":""},
-{"id":11,"name":"JAKK Media","suite":"322","floor":"3","tags":["media","content","marketing","SEO"],"description":"Content creation and marketing agency specializing in niche content across lifestyle verticals including mattresses, home security, and fitness.","website":"https://jakk.media","phone":"(347) 541-6161","email":"info@jakk.media","linkedin":"https://www.linkedin.com/company/jakk-media","instagram":"","people":[{"name":"Joe Auer","title":"Co-Founder, Managing Partner"},{"name":"Kenny Kline","title":"Co-Founder"}],"domain":"jakk.media","notableClients":"","notableWork":"","hours":""},
-{"id":12,"name":"Breakfast","suite":"253B","floor":"2","tags":["art","tech","installation","kinetic sculpture","innovation"],"description":"Fine art and engineering studio specializing in digitally controlled kinetic sculpture. Over 250 kinetic sculptures created. Blends technology with artistic innovation.","website":"https://breakfaststudio.com/","phone":"(917) 410-1122","email":"tiffany@breakfaststudio.com","linkedin":"https://www.linkedin.com/company/breakfast","instagram":"","people":[{"name":"Andrew Zolty","title":"Artist & Founder"},{"name":"Mattias Gunneras","title":"Co-Founder"}],"domain":"breakfaststudio.com","notableClients":"","notableWork":"Permanent collections at Harvard, Rockefeller Center, and Tiffany & Co.; 2024 Venice Biennale; Frieze London 2025; Christie\u2019s exhibitions","hours":""},
-{"id":13,"name":"Open Sea Design Co.","suite":"518","floor":"5","tags":["design","stationery","letterpress","brand"],"description":"Fine stationery and paper goods creative studio specializing in design-driven objects for journaling, gifting, and personal correspondence. Inspired by the occult, Victorian era, and naturalist art traditions.","website":"https://openseadesignco.com/","phone":"+1 305-967-1662","email":"","linkedin":"https://www.linkedin.com/company/open-sea-design-co","instagram":"","people":[{"name":"Melissa Constandse","title":"Creative Director & Founder (women-owned)"}],"domain":"openseadesignco.com","notableClients":"","notableWork":"","hours":""},
-{"id":14,"name":"Sesame Letterpress","suite":"312E","floor":"3","tags":["design","letterpress","print","stationery"],"description":"Fine letterpress stationery and custom design/printing studio. Artisan-made cards and paper gifts with over 20 years of client collaboration.","website":"https://sesameletterpress.com/","phone":"","email":"info@sesameletterpress.com","linkedin":"","instagram":"","people":[{"name":"Breck Hostetter","title":"Founder (women-owned)"}],"domain":"sesameletterpress.com","notableClients":"","notableWork":"","hours":""},
-{"id":15,"name":"Hey Oxford","suite":"","floor":"","tags":["agency","marketing","content","digital"],"description":"Boutique digital-first marketing agency sourcing and managing top content creators for blog posts, e-books, newsletters, and white papers.","website":"https://heyoxford.com/","phone":"(203) 930-1442","email":"","linkedin":"https://www.linkedin.com/company/hey-oxford","instagram":"","people":[],"domain":"heyoxford.com","notableClients":"","notableWork":"","hours":""},
-{"id":16,"name":"Northside Media","suite":"","floor":"","tags":["media","publishing","events","culture"],"description":"Media company producing live experiences, events, and digital content. Publishers of Brooklyn Magazine and The L Magazine. Produces Northside Festival, Taste Talks, and SummerScreen.","website":"http://northsidemedia.com/","phone":"(718) 596-3462","email":"info@northsidemedia.com","linkedin":"https://www.linkedin.com/company/northside-media-group","instagram":"","people":[{"name":"Daniel Stedman","title":"Co-Founder, Publisher of Brooklyn Magazine"},{"name":"Scott Stedman","title":"Co-Founder"}],"domain":"northsidemedia.com","notableClients":"","notableWork":"Custom publishing for BAM, The Joyce Theater, and Playwrights Horizons; Northside Festival, Taste Talks, SummerScreen","hours":""},
-{"id":17,"name":"Datalot / Centerfield Insurance","suite":"559","floor":"5","tags":["tech","marketing","insurance","martech"],"description":"Insurance marketing technology company providing customer acquisition solutions for auto, home, life, health, Medicare, and commercial insurance. Acquired by Centerfield in 2021.","website":"https://datalot.com/","phone":"(855) 527-4365","email":"","linkedin":"https://www.linkedin.com/company/datalot","instagram":"","people":[{"name":"Josh Reznick","title":"Founder & CEO"}],"domain":"datalot.com","notableClients":"","notableWork":"","hours":""},
-{"id":18,"name":"Flocabulary","suite":"","floor":"","tags":["tech","education","music","media"],"description":"Educational hip-hop learning platform for K-12 students using rap music and videos to teach vocabulary, history, science, and literacy. Used by 20,000+ schools.","website":"https://flocabulary.com/","phone":"(718) 852-0105","email":"info@flocabulary.com","linkedin":"https://www.linkedin.com/company/flocabulary","instagram":"","people":[{"name":"Alex Rappaport","title":"Co-Founder"},{"name":"Blake Harrison","title":"Co-Founder"}],"domain":"flocabulary.com","notableClients":"","notableWork":"","hours":""},
-{"id":19,"name":"Leone Design Studio","suite":"253B","floor":"2","tags":["architecture","interior design","residential"],"description":"Interior design and architecture firm specializing in modern and contemporary residential renovations in Brooklyn.","website":"https://leonedesignstudio.com/","phone":"(718) 243-9088","email":"info@leonedesignstudio.com","linkedin":"","instagram":"","people":[{"name":"Roy Leone","title":"Co-Founder, Architect"},{"name":"Jennifer Leone","title":"Co-Founder, Architect"}],"domain":"leonedesignstudio.com","notableClients":"","notableWork":"","hours":""},
-{"id":20,"name":"Mionetto USA","suite":"","floor":"","tags":["beverage","wine","brand","import"],"description":"One of the largest sparkling wine companies in the US, producing Prosecco and Cava wines. Heritage brands from Spain (1914) and Italy (1887). Operates as Freixenet Mionetto USA.","website":"https://usa.mionetto.com/","phone":"(718) 596-3339","email":"","linkedin":"https://www.linkedin.com/company/freixenet-mionetto-usa","instagram":"","people":[{"name":"Enore Ceola","title":"CEO and President"}],"domain":"usa.mionetto.com","notableClients":"","notableWork":"","hours":""},
-{"id":21,"name":"The Rounds","suite":"415","floor":"4","tags":["startup","sustainability","delivery","e-commerce"],"description":"Eco-friendly grocery delivery service with sustainable restocking, refillable staples, compost and recycling pickup. Zero-waste supply chain. Acquired by Misfits Market in 2025.","website":"https://theroundsnyc.com/","phone":"","email":"","linkedin":"https://www.linkedin.com/company/therounds","instagram":"","people":[{"name":"Alexander Torrey","title":"Co-Founder & CEO"}],"domain":"theroundsnyc.com","notableClients":"","notableWork":"","hours":""},
-{"id":22,"name":"Rovi Health","suite":"","floor":"","tags":["tech","health","AI","startup"],"description":"AI healthcare concierge for employees, steering them to high-quality, affordable care. Y Combinator F25 cohort.","website":"https://rovi.health/","phone":"","email":"contact@rovihealth.com","linkedin":"https://www.linkedin.com/company/rovi-health","instagram":"","people":[],"domain":"rovi.health","notableClients":"","notableWork":"","hours":""},
-{"id":23,"name":"CTS Builders","suite":"","floor":"","tags":["construction","development"],"description":"Design/build, construction management, land development, and owners\u2019 representation.","website":"https://cts-builders.com/","phone":"","email":"","linkedin":"https://www.linkedin.com/company/cts-builders","instagram":"","people":[],"domain":"cts-builders.com","notableClients":"","notableWork":"","hours":""},
-{"id":24,"name":"Empower Physical Therapy","suite":"306","floor":"3","tags":["health","wellness","physical therapy"],"description":"Pelvic health and orthopedic physical therapy clinic. In-clinic, virtual, and home visit options. Founded by Dr. Julia Rosenthal, DPT.","website":"https://www.empowerpt.nyc/","phone":"(332) 334-7909","email":"","linkedin":"","instagram":"","people":[{"name":"Julia Rosenthal, DPT","title":"Founder"}],"domain":"empowerpt.nyc","notableClients":"","notableWork":"","hours":""},
-{"id":25,"name":"McMahon, Martine & Gallagher","suite":"720","floor":"7","tags":["legal"],"description":"Law firm specializing in insurance defense, litigation, personal injury, premises liability, medical malpractice, and toxic torts. Founded 1958, 18 attorneys.","website":"https://www.mmglawyers.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"mmglawyers.com","notableClients":"","notableWork":"","hours":""},
-{"id":26,"name":"Kaishian & Mortazavi LLC","suite":"461/508","floor":"4","tags":["legal","civil rights"],"description":"Law firm specializing in civil rights and criminal defense.","website":"https://kaishianlaw.com/","phone":"(347) 662-2421","email":"","linkedin":"","instagram":"","people":[{"name":"Maryanne K. Kaishian","title":"Partner"},{"name":"S. Masoud Mortazavi","title":"Partner"}],"domain":"kaishianlaw.com","notableClients":"","notableWork":"","hours":""},
-{"id":27,"name":"Full English Post","suite":"624","floor":"6","tags":["audio","post-production","sound design","mixing","podcast"],"description":"Boutique audio post-production studio specializing in commercials, branded content, film, TV, cinema, and podcast production. Founded 2016 by Kieran Kaye. Three full studios plus The Podcast Suites.","website":"https://fullenglish.co/","phone":"(917) 426-5429","email":"hello@fullenglish.co","linkedin":"https://www.linkedin.com/company/fullenglishpost","instagram":"fullenglishpost","people":[{"name":"Kieran Kaye","title":"Founder & Head of Audio"},{"name":"Jenise Morgan","title":"Producer"},{"name":"Jason Kaye","title":"Head of Business Development"},{"name":"Charles Atangana","title":"Sound Designer / Mixer"},{"name":"Ben Steiner","title":"Sound Designer / Mixer"}],"domain":"fullenglish.co","notableClients":"Apple TV+, Netflix, Sony, Sally Hansen, Jose Cuervo, Zillow; game trailers including Elden Ring: Shadow of the Erdtree","notableWork":"","hours":"Monday\u2013Friday, 9am\u20136pm"},
-{"id":28,"name":"Maisonette","suite":"620","floor":"6","tags":["e-commerce","retail","kids","lifestyle","brand"],"description":"Curated baby and kids\u2019 luxury marketplace. Stylish, premium alternative to mass-market kids\u2019 retail. Founded 2017.","website":"https://maisonette.com/","phone":"(212) 796-2300","email":"","linkedin":"","instagram":"","people":[],"domain":"maisonette.com","notableClients":"","notableWork":"","hours":""},
-{"id":29,"name":"5 Plus 5 Gallery","suite":"","floor":"","tags":["art","gallery"],"description":"Art gallery within the building.","website":"","phone":"(718) 488-8383","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":30,"name":"Equinox DUMBO","suite":"","floor":"","tags":["fitness","luxury","wellness"],"description":"Luxury fitness center. 22,000 sq ft with strength training, three studios, spa, juice bar, lounge, and infinity pool with Brooklyn Bridge views.","website":"https://www.equinox.com/clubs/new-york/brooklyn/dumbo","phone":"(347) 435-2341","email":"","linkedin":"","instagram":"","people":[],"domain":"equinox.com","notableClients":"","notableWork":"","hours":""},
-{"id":31,"name":"Gleason\u2019s Gym","suite":"","floor":"","tags":["fitness","boxing","historic"],"description":"Largest and oldest active boxing gym in the United States. Has produced 129 World Champions and 2 Olympic Gold Medalists.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"gleasonsgym.com","notableClients":"","notableWork":"","hours":""},
-{"id":32,"name":"Peas & Pickles","suite":"1","floor":"1","tags":["retail","food","market"],"description":"24-hour supermarket with fresh produce, hot and cold food bar, sandwiches, and bagels.","website":"","phone":"(718) 488-8336","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":"Open 24 hours"},
-{"id":33,"name":"April Hannah","suite":"714","floor":"7","tags":["art","painting","sculpture"],"description":"Abstract painter and sculptor. MFA from School of Visual Arts. Museum of Arts and Design Artist Studios Residency Award (2010).","website":"https://www.aprilhannah.com/","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"April Hannah","title":"Artist"}],"domain":"aprilhannah.com","notableClients":"","notableWork":"","hours":""},
-{"id":34,"name":"Susan Homer","suite":"","floor":"","tags":["art","studio"],"description":"Artist with studio in the building. Featured in NY Magazine and Domino Magazine. Participates in DUMBO Open Studios.","website":"https://www.susanhomer.com/","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"Susan Homer","title":"Artist"}],"domain":"susanhomer.com","notableClients":"","notableWork":"","hours":""},
-{"id":35,"name":"Office JDY Architecture","suite":"335","floor":"3","tags":["architecture","interior design","project strategy"],"description":"Architecture, interiors, and project strategy firm. Multidisciplinary practice handling residential, commercial, and institutional projects.","website":"https://www.officejdy.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"officejdy.com","notableClients":"","notableWork":"","hours":""},
-{"id":36,"name":"SA-DA Architecture","suite":"555","floor":"5","tags":["architecture","interior design","residential","commercial"],"description":"Multidisciplinary architectural practice providing residential and commercial design services. Listed among Brownstoner\u2019s top Brooklyn interior design firms.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":37,"name":"Romines Architecture PLLC","suite":"709","floor":"7","tags":["architecture","design"],"description":"Architecture firm.","website":"http://www.rominesarchitecture.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"rominesarchitecture.com","notableClients":"","notableWork":"","hours":""},
-{"id":38,"name":"Robinson + Grisaru Architecture","suite":"711","floor":"7","tags":["architecture","design"],"description":"Architecture firm. Member of AIA Brooklyn chapter.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":39,"name":"Format Architecture Office","suite":"312D","floor":"3","tags":["architecture","design","urban"],"description":"Architecture and design practice.","website":"https://format.nyc/about","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"format.nyc","notableClients":"","notableWork":"","hours":""},
-{"id":40,"name":"Dencityworks","suite":"713","floor":"7","tags":["architecture","mixed-use","multifamily","cultural"],"description":"Architecture firm focusing on mixed-use, multifamily, cultural, and office projects. Established 2021.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":41,"name":"Cornerstone Agency","suite":"908","floor":"9","tags":["talent","marketing","lifestyle","music","PR"],"description":"Creative lifestyle marketing and PR agency founded in 1996. Co-founded by Rob Stone, who also co-founded The Fader. Manages talent and produces cultural marketing campaigns.","website":"https://www.cornerstoneagency.com/","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"Rob Stone","title":"Founder (also co-founded The Fader)"}],"domain":"cornerstoneagency.com","notableClients":"","notableWork":"","hours":""},
-{"id":42,"name":"The Gotham Film & Media Institute","suite":"324","floor":"3","tags":["nonprofit","film","media","independent film"],"description":"Formerly the Independent Filmmaker Project (IFP). The Gotham is the leading nonprofit dedicated to independent film and media. Presents the annual Gotham Awards and runs filmmaker labs.","website":"https://thegotham.org/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"thegotham.org","notableClients":"","notableWork":"","hours":""},
-{"id":43,"name":"Romp Film LLC","suite":"712","floor":"7","tags":["film","production"],"description":"Film production company. Registered LLC since 2008.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":44,"name":"Greg Miller Photography","suite":"","floor":"","tags":["photography","fine art","commercial"],"description":"Fine art and commercial photographer with 30+ years of experience. Studio in building.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"Greg Miller","title":"Photographer"}],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":45,"name":"Anne Peabody","suite":"455","floor":"4","tags":["art","sculpture","functional art","performance"],"description":"Artist creating functional art, drawings, sculptures, and performance pieces. Studio in building.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"Anne Peabody","title":"Artist"}],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":46,"name":"The Sculptors Guild","suite":"256","floor":"2","tags":["art","sculpture","nonprofit","artist collective"],"description":"Artist-run organization founded in 1937 dedicated to promoting contemporary sculpture. One of the oldest artist organizations in the US.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":47,"name":"Brompton Bicycle USA","suite":"253A","floor":"2","tags":["bicycle","manufacturing","retail","UK brand"],"description":"US office for Brompton, the UK\u2019s largest bicycle manufacturer. Famous for their folding bikes. This is their American operations base.","website":"https://us.brompton.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"us.brompton.com","notableClients":"","notableWork":"","hours":""},
-{"id":48,"name":"Blue Collective","suite":"","floor":"","tags":["venture capital","investment","startup"],"description":"Venture capital and investment firm.","website":"https://bluecollective.com/","phone":"+1 929-295-6711","email":"blue@bluecollective.com","linkedin":"","instagram":"","people":[],"domain":"bluecollective.com","notableClients":"","notableWork":"","hours":""},
-{"id":49,"name":"Dash","suite":"","floor":"","tags":["software","tech","app"],"description":"Software development company.","website":"https://dashwith.me","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"dashwith.me","notableClients":"","notableWork":"","hours":""},
-{"id":50,"name":"Recycle-A-Bicycle","suite":"","floor":"","tags":["nonprofit","bicycle","education","youth"],"description":"Bicycle service and youth education nonprofit. Teaches bike repair and promotes cycling as transportation and recreation.","website":"","phone":"(718) 858-2972","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":51,"name":"RXR Sports","suite":"","floor":"","tags":["talent management","sports","entertainment"],"description":"Elite athlete and artist management agency.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":52,"name":"Intently","suite":"","floor":"","tags":["marketing","digital"],"description":"Marketing company.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":53,"name":"Steven Cohn & Richard Goldberg","suite":"312-D","floor":"3","tags":["legal"],"description":"Law office at 55 Washington Street.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":54,"name":"Law Office of Jonathan Mason-Kinsey","suite":"","floor":"","tags":["legal"],"description":"Law office at 55 Washington Street.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":55,"name":"Kenneth Montgomery, Esq.","suite":"","floor":"","tags":["legal"],"description":"Law office at 55 Washington Street.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":56,"name":"Inch, Inc.","suite":"654","floor":"6","tags":["product design","industrial design","engineering","manufacturing","medical devices"],"description":"Product design and engineering consultancy. Takes products from concept through industrial design, mechanical engineering, electronics, and manufacturing. Founded 1990 \u2014 over 35 years in operation.","website":"https://www.inchnyc.com/","phone":"(718) 260-0069","email":"info@inchnyc.com","linkedin":"","instagram":"","people":[{"name":"Timothy Eberhardt","title":"Principal"},{"name":"Benjamen Centeno","title":"Designer"},{"name":"Kola Lolo","title":"Designer"}],"domain":"inchnyc.com","notableClients":"","notableWork":"Two I.D. Magazine Gold Awards; work featured in The New York Times, Wall Street Journal, Inc. Magazine, and London Design Museum; medical jet injector vaccination device with the Jean-Abraham Foundation","hours":""},
-{"id":57,"name":"VR Studio (Suite 618)","suite":"618","floor":"6","tags":["VR","XR","immersive","virtual production"],"description":"VR or XR production studio identified at Suite 618. Identity unconfirmed \u2014 company has minimal web presence or is operating pre-launch.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":58,"name":"Ask Media (Suite 612)","suite":"612","floor":"6","tags":["media","digital","content","performance marketing"],"description":"Signage identified at Suite 612. Potentially Ask Media Group (IAC), the performance marketing company operating Ask.com across health, finance, and consumer verticals. Identity low confidence.","website":"https://www.askmediagroup.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"askmediagroup.com","notableClients":"","notableWork":"","hours":""}
-];
-
-
-const AVATAR_BG='rgba(196,162,101,0.15)';
-
-const mainCategories=[
-  {label:'All',tags:null},
-  {label:'Agencies',tags:['agency','creative','digital','branding']},
-  {label:'Production',tags:['production','film','documentary','audio','post-production','sound design']},
-  {label:'Architecture',tags:['architecture','interior design','design']},
-  {label:'Art',tags:['art','painting','sculpture','photography','installation','gallery']},
-  {label:'Tech',tags:['tech','edtech','software','AI','startup']},
-  {label:'Media',tags:['media','publishing','music','events','culture','content']},
-  {label:'PR',tags:['PR','communications','beauty','influencer','talent']},
-  {label:'Legal',tags:['legal','civil rights']},
-];
-
-let activeCategory=null;
-let activeFloor=null;
-let searchTerm='';
-
-/* DISCIPLINE LABEL */
-const DISCIPLINE_MAP={'agency':'Creative Agency','production':'Production','film':'Film & Documentary','documentary':'Documentary','architecture':'Architecture','design':'Design Studio','art':'Fine Art','tech':'Technology','media':'Media & Publishing','PR':'Public Relations','legal':'Legal','health':'Health & Wellness','education':'Education','startup':'Startup','e-commerce':'E-Commerce','retail':'Retail','food':'Food & Beverage','fitness':'Fitness','music':'Music & Culture','photography':'Photography','audio':'Audio Post-Production','talent':'Talent Management','nonprofit':'Nonprofit','construction':'Construction','venture capital':'Investment','software':'Software','bicycle':'Retail','beverage':'Beverage','luxury':'Luxury','boxing':'Fitness','historic':'Historic','stationery':'Design Studio','letterpress':'Letterpress Studio','installation':'Art & Technology','kinetic sculpture':'Art & Technology','mixed-use':'Architecture','experiential':'Experiential Marketing','talent management':'Talent Management','marketing':'Marketing','digital':'Digital Agency','content':'Content','SEO':'SEO & Content','martech':'Marketing Technology','sustainability':'Sustainability','delivery':'Delivery','AI':'AI & Health Tech','civil rights':'Civil Rights Law','physical therapy':'Physical Therapy','podcast':'Audio Production','sound design':'Sound Design','mixing':'Audio Mixing','kids':'Kids & Family','lifestyle':'Lifestyle','brand':'Brand','wine':'Wine & Spirits','import':'Import','innovation':'Innovation','functional art':'Functional Art','performance':'Performance Art','artist collective':'Artist Collective','independent film':'Independent Film','urban':'Urban Design'};
-function disciplineLabel(c){
-  for(const t of c.tags){if(DISCIPLINE_MAP[t])return DISCIPLINE_MAP[t]}
-  return c.tags[0]?c.tags[0].charAt(0).toUpperCase()+c.tags[0].slice(1):'Creative';
-}
-
-/* LOGO / AVATAR */
-function logoOrAvatar(company,s,r){
-  if(!company.domain)return avatarDiv(company,s,r);
-  const initial=(company.name.match(/[A-Za-z]/)||['?'])[0].toUpperCase();
-  return `<img class="co-logo" src="https://logo.clearbit.com/${company.domain}" data-domain="${company.domain}" data-state="0" data-initial="${initial}" data-size="${s}" data-radius="${r}" style="width:${s}px;height:${s}px;object-fit:contain;display:block;padding:2px;border-radius:${r}px" loading="lazy" alt="${company.name} logo">`;
-}
-function avatarDiv(company,s,r){
-  const initial=(company.name.match(/[A-Za-z]/)||['?'])[0].toUpperCase();
-  return `<div style="width:${s}px;height:${s}px;border-radius:${r}px;background:${AVATAR_BG};display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:${Math.round(s*.38)}px;color:var(--cream);flex-shrink:0">${initial}</div>`;
-}
-document.addEventListener('error',function(e){
-  const img=e.target;if(!img.classList||!img.classList.contains('co-logo'))return;
-  const state=parseInt(img.dataset.state||'0');
-  if(state===0&&img.dataset.domain){img.dataset.state='1';img.src=`https://www.google.com/s2/favicons?domain=${img.dataset.domain}&sz=128`;return}
-  const s=parseInt(img.dataset.size)||48,r=parseInt(img.dataset.radius)||24;
-  const div=document.createElement('div');
-  div.style.cssText=`width:${s}px;height:${s}px;border-radius:${r}px;background:${AVATAR_BG};display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:${Math.round(s*.38)}px;color:var(--cream);flex-shrink:0`;
-  div.textContent=img.dataset.initial;
-  img.replaceWith(div);
-},true);
-
-/* CARD */
-function renderCard(c,delay){
-  const tagHtml=c.tags.slice(0,4).map(t=>`<span class="card-tag">${t}</span>`).join('');
-  const floorInfo=c.suite?`<span class="card-floor">Fl ${c.floor} / ${c.suite}</span>`:'';
-  return `<div class="card" data-id="${c.id}" style="animation-delay:${delay}s">
-    <div class="card-header"><div class="card-name">${c.name}</div>${floorInfo}</div>
-    <div class="card-discipline">${disciplineLabel(c)}</div>
-    <div class="card-tags">${tagHtml}</div>
-    <div class="card-desc">${c.description}</div>
-    <div class="card-view">View Profile</div>
-  </div>`;
-}
-
-/* MODAL */
-let modalOpen=false;
-function openModal(id){
-  const c=companies.find(x=>x.id===id);if(!c)return;
-  const h=document.getElementById('modalHeader');
-  const b=document.getElementById('modalBody');
-  const f=document.getElementById('modalFooter');
-  const logo=logoOrAvatar(c,72,36);
-  h.innerHTML=`<button class="modal-close" onclick="closeModal()">&times;</button>
-    <div class="modal-logo-row"><div class="modal-logo-wrap">${logo}</div>
-    <div class="modal-name-block"><div class="modal-name">${c.name}</div><div class="modal-discipline">${disciplineLabel(c)}</div>
-    <div class="modal-residence">${c.suite?'Floor '+c.floor+' / Suite '+c.suite:'DUMBO, Brooklyn'}</div></div></div>`;
-  let body=`<div class="modal-section"><div class="section-label">About</div><div class="modal-desc">${c.description}</div></div>`;
-  if(c.people.length){body+=`<div class="modal-section"><div class="section-label">Key People</div><div class="person-list">${c.people.map(p=>`<div class="person-card"><div class="person-name">${p.name}</div><div class="person-title">${p.title}</div></div>`).join('')}</div></div>`}
-  const contacts=[];
-  if(c.website)contacts.push(`<div class="contact-row"><span class="contact-icon">W</span><a href="${c.website}" target="_blank" rel="noopener">${c.domain||'Website'}</a></div>`);
-  if(c.phone)contacts.push(`<div class="contact-row"><span class="contact-icon">T</span>${c.phone}</div>`);
-  if(c.email)contacts.push(`<div class="contact-row"><span class="contact-icon">E</span>${c.email}</div>`);
-  if(c.linkedin)contacts.push(`<div class="contact-row"><span class="contact-icon">in</span><a href="${c.linkedin}" target="_blank" rel="noopener">LinkedIn</a></div>`);
-  if(c.instagram)contacts.push(`<div class="contact-row"><span class="contact-icon">IG</span><a href="https://instagram.com/${c.instagram}" target="_blank">@${c.instagram}</a></div>`);
-  if(contacts.length)body+=`<div class="modal-section"><div class="section-label">Contact</div><div class="contact-grid">${contacts.join('')}</div></div>`;
-  if(c.notableClients)body+=`<div class="modal-section"><div class="section-label">Notable Clients</div><div class="notable-text">${c.notableClients}</div></div>`;
-  if(c.notableWork)body+=`<div class="modal-section"><div class="section-label">Notable Work</div><div class="notable-text">${c.notableWork}</div></div>`;
-  if(c.hours)body+=`<div class="modal-section"><div class="section-label">Hours</div><div class="notable-text">${c.hours}</div></div>`;
-  b.innerHTML=body;
-  f.innerHTML=c.website?`<a href="${c.website}" target="_blank" rel="noopener" class="btn-primary">Visit Website</a><button class="btn-secondary" onclick="closeModal()">Close</button>`:`<button class="btn-secondary" style="flex:1" onclick="closeModal()">Close</button>`;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.getElementById('modalScroll').scrollTop=0;
-  document.body.style.overflow='hidden';modalOpen=true;
-}
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';modalOpen=false}
-document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modalOpen)closeModal()});
-
-/* NAV */
-function buildNav(){
-  const nav=document.getElementById('catNav');
-  mainCategories.forEach((cat,i)=>{
-    const btn=document.createElement('button');
-    btn.className='cat-link'+(i===0?' active':'');
-    btn.textContent=cat.label;
-    btn.addEventListener('click',function(){
-      activeCategory=cat.tags;
-      document.querySelectorAll('.cat-link').forEach(b=>b.classList.remove('active'));
-      this.classList.add('active');
-      render();
-    });
-    nav.appendChild(btn);
-  });
-}
-
-/* FLOOR FILTERS */
-function buildFloorFilters(){
-  const row=document.getElementById('floorRow');
-  const allBtn=document.createElement('button');
-  allBtn.className='floor-btn active';allBtn.textContent='All';
-  allBtn.onclick=()=>{activeFloor=null;updateFloors();render()};
-  row.appendChild(allBtn);
-  for(let f=1;f<=9;f++){
-    const btn=document.createElement('button');btn.className='floor-btn';btn.textContent=f;
-    btn.onclick=()=>{activeFloor=String(f);updateFloors();render()};
-    row.appendChild(btn);
-  }
-}
-function updateFloors(){document.querySelectorAll('.floor-btn').forEach((b,i)=>{b.classList.toggle('active',i===0?activeFloor===null:activeFloor===String(i))})}
-
-/* FILTER LOGIC */
-function matchesSearch(c,term){if(!term)return true;const t=term.toLowerCase();return[c.name,c.description,c.suite,c.notableClients||'',c.notableWork||'',...c.tags,...c.people.map(p=>p.name+' '+p.title)].join(' ').toLowerCase().includes(t)}
-function matchesCategory(c){if(!activeCategory)return true;return activeCategory.some(t=>c.tags.some(ct=>ct.toLowerCase().includes(t.toLowerCase())))}
-function matchesFloor(c){if(!activeFloor)return true;return c.floor===activeFloor}
-
-/* RENDER */
-function render(){
-  const filtered=companies.filter(c=>matchesSearch(c,searchTerm)&&matchesCategory(c)&&matchesFloor(c));
-  const grid=document.getElementById('grid');
-  const noResults=document.getElementById('noResults');
-  const countBar=document.getElementById('countBar');
-  if(!filtered.length){grid.innerHTML='';noResults.style.display='block';countBar.textContent=''}
-  else{noResults.style.display='none';grid.innerHTML=filtered.map((c,i)=>renderCard(c,Math.min(i*.035,.35))).join('');
-  countBar.textContent=filtered.length===companies.length?`${companies.length} Members`:`${filtered.length} of ${companies.length} Members`}
-  grid.querySelectorAll('.card').forEach(card=>{card.addEventListener('click',()=>openModal(parseInt(card.dataset.id)))});
-}
-
-document.getElementById('searchInput').addEventListener('input',function(e){searchTerm=e.target.value;render()});
-
-buildNav();buildFloorFilters();render();
-</script>
-</body>
-</html>
-
-/* ── TOPBAR SCROLL ──────────────────────────────────────── */
-window.addEventListener('scroll',function(){
-  document.getElementById('topbar').classList.toggle('scrolled',window.scrollY>60);
-});
-
-/* ── HERO ZOOM ──────────────────────────────────────────── */
-window.addEventListener('load',function(){
-  document.getElementById('hero').classList.add('loaded');
-});
-
-/* ── COMPANY DATA ───────────────────────────────────────── */
-const companies = [
-{"id":0,"name":"Brand Imagination Group (BiG)","suite":"650","floor":"6","tags":["agency","production","creative","brand","advertising"],"description":"Hybrid creative agency and production company. Full-service brand strategy, integrated creative, and cinematic production under one roof. Cannes-caliber creative with production capability baked in.","website":"https://gobig.nyc/","phone":"","email":"","linkedin":"https://www.linkedin.com/company/brand-imagination-group","instagram":"","people":[{"name":"Rick Wayne","title":"Executive Creative Director"},{"name":"Barry Krause","title":"CEO, former CEO of Publicis North America"},{"name":"Samuel Lucas Gove","title":"Design Director"}],"domain":"gobig.nyc","notableClients":"Sharpie, Graco, Paper Mate, NUK, Disney/Mufasa, CenturyLink/NFL, Warner Bros","notableWork":"","hours":""},
-{"id":1,"name":"Sn\u00f8hetta","suite":"900","floor":"9","tags":["architecture","design","landscape","interior design"],"description":"International integrated architecture and design studio spanning architecture, landscape, interior architecture, product design, and digital design. Relocated NYC HQ from Manhattan to DUMBO in 2025.","website":"https://www.snohetta.com/","phone":"(646) 383-4762","email":"contact@snohetta.com","linkedin":"https://www.linkedin.com/company/snohetta","instagram":"","people":[{"name":"Kjetil Tr\u00e6dal Thorsen","title":"Founder & Partner"},{"name":"Craig Dykers","title":"Co-Founder & Partner"},{"name":"Isabella Alveberg","title":"Group CEO"},{"name":"Elaine Molinar","title":"Managing Director, Brooklyn"}],"domain":"snohetta.com","notableClients":"","notableWork":"Norwegian National Opera & Ballet (Oslo), 9/11 Memorial Museum Pavilion (NYC), Bibliotheca Alexandrina (Egypt), SFMOMA Expansion, Times Square redesign, Under (Europe\u2019s first underwater restaurant)","hours":""},
-{"id":2,"name":"Big Spaceship (SPCSHP)","suite":"512","floor":"5","tags":["agency","digital","creative","strategy","design"],"description":"Digital creative agency specializing in digital strategy, design, data analytics, and integrated marketing communications. Acquired by MSQ in October 2024.","website":"https://www.bigspaceship.com/","phone":"(718) 222-0281","email":"info@bigspaceship.com","linkedin":"https://www.linkedin.com/company/bigspaceship","instagram":"","people":[{"name":"Michael Lebowitz","title":"Co-Founder & CEO"},{"name":"Harry Garcia","title":"Executive Design Director"}],"domain":"bigspaceship.com","notableClients":"Nike, Ford, Target, Gucci, Google/YouTube, Starbucks, MoMA, JetBlue, Samsung, BMW","notableWork":"","hours":""},
-{"id":3,"name":"Story Syndicate","suite":"655/656","floor":"6","tags":["production","documentary","film","media"],"description":"Documentary film and television production company; also launched a scripted division in 2023. Known for award-winning docs on Netflix, HBO, and major streamers.","website":"https://www.storysyndicate.com/","phone":"(718) 230-5111","email":"info@storysyndicate.com","linkedin":"https://www.linkedin.com/company/storysyndicate","instagram":"","people":[{"name":"Liz Garbus","title":"Co-Founder & Director, 2x Oscar nominee, 2x Emmy winner"},{"name":"Dan Cogan","title":"Co-Founder, Oscar & Emmy winner"},{"name":"Nellie Reed","title":"Head of Scripted Division"}],"domain":"storysyndicate.com","notableClients":"","notableWork":"Harry & Meghan (Netflix), All In: The Fight for Democracy, Fauci, Becoming Cousteau, The Innocence Files (Netflix), I\u2019ll Be Gone in the Dark (HBO)","hours":""},
-{"id":4,"name":"Invisible North","suite":"450","floor":"4","tags":["agency","experiential","brand","events","production"],"description":"Female-owned global brand experience agency specializing in experiential marketing, events, film, content, and creative media. Approximately 70 people.","website":"https://invisiblenorth.com/","phone":"(212) 603-9171","email":"hello@invisiblenorth.com","linkedin":"https://www.linkedin.com/company/invisible-north","instagram":"","people":[{"name":"Geoff Renaud","title":"Founder & CEO"},{"name":"Joshua Wexler","title":"Co-Founder"},{"name":"Zo\u00e9 Ganch","title":"Co-Founder / EVP"}],"domain":"invisiblenorth.com","notableClients":"Intuit Mailchimp, Google Pixel (NBA All-Star Week)","notableWork":"","hours":""},
-{"id":5,"name":"Foundation PR","suite":"4th Floor","floor":"4","tags":["PR","communications","beauty","lifestyle","talent"],"description":"Communications agency providing strategy and talent management for beauty, lifestyle, fashion, and wellness brands and personalities. Formerly KFD Public Relations.","website":"https://www.wearefoundation.co/","phone":"","email":"","linkedin":"https://www.linkedin.com/company/foundation-comms","instagram":"","people":[],"domain":"wearefoundation.co","notableClients":"","notableWork":"","hours":""},
-{"id":6,"name":"The Fader","suite":"908","floor":"9","tags":["media","music","publishing","events","brand"],"description":"Influential music and culture publication covering emerging artists from underground to mainstream. Also operates Fader Films (video production) and live brand activations including the legendary Fader Fort.","website":"https://www.thefader.com/","phone":"(212) 741-7100","email":"pr@thefader.com","linkedin":"https://www.linkedin.com/company/thefader","instagram":"","people":[{"name":"Jon Cohen","title":"Co-Founder & CEO"},{"name":"Naomi Zeichner","title":"Editor in Chief"},{"name":"Rob Stone","title":"Co-Founder (Cornerstone Agency)"}],"domain":"thefader.com","notableClients":"","notableWork":"Fader Fort at SXSW (legendary brand activation series), brand partnerships with Sprite and Vitamin Water","hours":""},
-{"id":7,"name":"Amplify Education","suite":"Floor 8","floor":"8","tags":["tech","education","edtech","curriculum"],"description":"Leading K-12 education technology and curriculum company providing next-generation curriculum, formative assessments, and professional development. Serves 21,000+ schools across all 50 states.","website":"https://amplify.com/","phone":"(212) 213-8177","email":"","linkedin":"https://www.linkedin.com/company/amplifyinc","instagram":"","people":[{"name":"Larry Berger","title":"CEO & Co-Founder"},{"name":"Catherine MacKay","title":"President & COO"},{"name":"Aaron Harnly","title":"CTO"},{"name":"Kay Moffett","title":"CMO"}],"domain":"amplify.com","notableClients":"","notableWork":"","hours":""},
-{"id":8,"name":"Seen Group","suite":"420","floor":"4","tags":["PR","beauty","creative","influencer","brand"],"description":"Industry-leading beauty specialist collective offering strategy, creative, communications, and influencer marketing. Divisions include Beauty SEEN, SEEN Works (creative), and Community X SEEN. Global agency with staff across 6 continents.","website":"https://www.seengroup.com/","phone":"+44 (0)207 1869 800","email":"hello@seengroup.com","linkedin":"https://www.linkedin.com/company/seen-group","instagram":"","people":[{"name":"Jane Walsh","title":"CEO"}],"domain":"seengroup.com","notableClients":"","notableWork":"","hours":""},
-{"id":9,"name":"White Architecture Studio","suite":"710","floor":"7","tags":["architecture","design","residential","hospitality"],"description":"Boutique architecture studio specializing in residential, institutional, hospitality, and retail architecture. Founded 2011 by Steven Martin White, AIA, formerly of Safdie Architects.","website":"https://whitearchstudio.com/","phone":"(718) 924-2303","email":"","linkedin":"https://www.linkedin.com/company/white-architecture-studio","instagram":"","people":[{"name":"Steven Martin White, AIA","title":"Founder & Principal Architect, 30 years experience"}],"domain":"whitearchstudio.com","notableClients":"","notableWork":"City Library (Salt Lake City), Khalsa Museum (Punjab, India), Yad Vashem Holocaust Remembrance Center (Jerusalem)","hours":""},
-{"id":10,"name":"The Future Forward","suite":"312A","floor":"3","tags":["agency","design","web","branding","digital"],"description":"Creative agency specializing in branding, web design, web development, and digital innovation. Part of Multiplica since 2022.","website":"https://thefutureforward.com/","phone":"(347) 946-2685","email":"hello@thefutureforward.com","linkedin":"https://www.linkedin.com/company/thefutureforward","instagram":"","people":[],"domain":"thefutureforward.com","notableClients":"Nike, Pepsi, Rogers Partners Architects, Morris Adjmi Architects","notableWork":"","hours":""},
-{"id":11,"name":"JAKK Media","suite":"322","floor":"3","tags":["media","content","marketing","SEO"],"description":"Content creation and marketing agency specializing in niche content across lifestyle verticals including mattresses, home security, and fitness.","website":"https://jakk.media","phone":"(347) 541-6161","email":"info@jakk.media","linkedin":"https://www.linkedin.com/company/jakk-media","instagram":"","people":[{"name":"Joe Auer","title":"Co-Founder, Managing Partner"},{"name":"Kenny Kline","title":"Co-Founder"}],"domain":"jakk.media","notableClients":"","notableWork":"","hours":""},
-{"id":12,"name":"Breakfast","suite":"253B","floor":"2","tags":["art","tech","installation","kinetic sculpture","innovation"],"description":"Fine art and engineering studio specializing in digitally controlled kinetic sculpture. Over 250 kinetic sculptures created. Blends technology with artistic innovation.","website":"https://breakfaststudio.com/","phone":"(917) 410-1122","email":"tiffany@breakfaststudio.com","linkedin":"https://www.linkedin.com/company/breakfast","instagram":"","people":[{"name":"Andrew Zolty","title":"Artist & Founder"},{"name":"Mattias Gunneras","title":"Co-Founder"}],"domain":"breakfaststudio.com","notableClients":"","notableWork":"Permanent collections at Harvard, Rockefeller Center, and Tiffany & Co.; 2024 Venice Biennale; Frieze London 2025; Christie\u2019s exhibitions","hours":""},
-{"id":13,"name":"Open Sea Design Co.","suite":"518","floor":"5","tags":["design","stationery","letterpress","brand"],"description":"Fine stationery and paper goods creative studio specializing in design-driven objects for journaling, gifting, and personal correspondence. Inspired by the occult, Victorian era, and naturalist art traditions.","website":"https://openseadesignco.com/","phone":"+1 305-967-1662","email":"","linkedin":"https://www.linkedin.com/company/open-sea-design-co","instagram":"","people":[{"name":"Melissa Constandse","title":"Creative Director & Founder (women-owned)"}],"domain":"openseadesignco.com","notableClients":"","notableWork":"","hours":""},
-{"id":14,"name":"Sesame Letterpress","suite":"312E","floor":"3","tags":["design","letterpress","print","stationery"],"description":"Fine letterpress stationery and custom design/printing studio. Artisan-made cards and paper gifts with over 20 years of client collaboration.","website":"https://sesameletterpress.com/","phone":"","email":"info@sesameletterpress.com","linkedin":"","instagram":"","people":[{"name":"Breck Hostetter","title":"Founder (women-owned)"}],"domain":"sesameletterpress.com","notableClients":"","notableWork":"","hours":""},
-{"id":15,"name":"Hey Oxford","suite":"","floor":"","tags":["agency","marketing","content","digital"],"description":"Boutique digital-first marketing agency sourcing and managing top content creators for blog posts, e-books, newsletters, and white papers.","website":"https://heyoxford.com/","phone":"(203) 930-1442","email":"","linkedin":"https://www.linkedin.com/company/hey-oxford","instagram":"","people":[],"domain":"heyoxford.com","notableClients":"","notableWork":"","hours":""},
-{"id":16,"name":"Northside Media","suite":"","floor":"","tags":["media","publishing","events","culture"],"description":"Media company producing live experiences, events, and digital content. Publishers of Brooklyn Magazine and The L Magazine. Produces Northside Festival, Taste Talks, and SummerScreen.","website":"http://northsidemedia.com/","phone":"(718) 596-3462","email":"info@northsidemedia.com","linkedin":"https://www.linkedin.com/company/northside-media-group","instagram":"","people":[{"name":"Daniel Stedman","title":"Co-Founder, Publisher of Brooklyn Magazine"},{"name":"Scott Stedman","title":"Co-Founder"}],"domain":"northsidemedia.com","notableClients":"","notableWork":"Custom publishing for BAM, The Joyce Theater, and Playwrights Horizons; Northside Festival, Taste Talks, SummerScreen","hours":""},
-{"id":17,"name":"Datalot / Centerfield Insurance","suite":"559","floor":"5","tags":["tech","marketing","insurance","martech"],"description":"Insurance marketing technology company providing customer acquisition solutions for auto, home, life, health, Medicare, and commercial insurance. Acquired by Centerfield in 2021.","website":"https://datalot.com/","phone":"(855) 527-4365","email":"","linkedin":"https://www.linkedin.com/company/datalot","instagram":"","people":[{"name":"Josh Reznick","title":"Founder & CEO"}],"domain":"datalot.com","notableClients":"","notableWork":"","hours":""},
-{"id":18,"name":"Flocabulary","suite":"","floor":"","tags":["tech","education","music","media"],"description":"Educational hip-hop learning platform for K-12 students using rap music and videos to teach vocabulary, history, science, and literacy. Used by 20,000+ schools.","website":"https://flocabulary.com/","phone":"(718) 852-0105","email":"info@flocabulary.com","linkedin":"https://www.linkedin.com/company/flocabulary","instagram":"","people":[{"name":"Alex Rappaport","title":"Co-Founder"},{"name":"Blake Harrison","title":"Co-Founder"}],"domain":"flocabulary.com","notableClients":"","notableWork":"","hours":""},
-{"id":19,"name":"Leone Design Studio","suite":"253B","floor":"2","tags":["architecture","interior design","residential"],"description":"Interior design and architecture firm specializing in modern and contemporary residential renovations in Brooklyn.","website":"https://leonedesignstudio.com/","phone":"(718) 243-9088","email":"info@leonedesignstudio.com","linkedin":"","instagram":"","people":[{"name":"Roy Leone","title":"Co-Founder, Architect"},{"name":"Jennifer Leone","title":"Co-Founder, Architect"}],"domain":"leonedesignstudio.com","notableClients":"","notableWork":"","hours":""},
-{"id":20,"name":"Mionetto USA","suite":"","floor":"","tags":["beverage","wine","brand","import"],"description":"One of the largest sparkling wine companies in the US, producing Prosecco and Cava wines. Heritage brands from Spain (1914) and Italy (1887). Operates as Freixenet Mionetto USA.","website":"https://usa.mionetto.com/","phone":"(718) 596-3339","email":"","linkedin":"https://www.linkedin.com/company/freixenet-mionetto-usa","instagram":"","people":[{"name":"Enore Ceola","title":"CEO and President"}],"domain":"usa.mionetto.com","notableClients":"","notableWork":"","hours":""},
-{"id":21,"name":"The Rounds","suite":"415","floor":"4","tags":["startup","sustainability","delivery","e-commerce"],"description":"Eco-friendly grocery delivery service with sustainable restocking, refillable staples, compost and recycling pickup. Zero-waste supply chain. Acquired by Misfits Market in 2025.","website":"https://theroundsnyc.com/","phone":"","email":"","linkedin":"https://www.linkedin.com/company/therounds","instagram":"","people":[{"name":"Alexander Torrey","title":"Co-Founder & CEO"}],"domain":"theroundsnyc.com","notableClients":"","notableWork":"","hours":""},
-{"id":22,"name":"Rovi Health","suite":"","floor":"","tags":["tech","health","AI","startup"],"description":"AI healthcare concierge for employees, steering them to high-quality, affordable care. Y Combinator F25 cohort.","website":"https://rovi.health/","phone":"","email":"contact@rovihealth.com","linkedin":"https://www.linkedin.com/company/rovi-health","instagram":"","people":[],"domain":"rovi.health","notableClients":"","notableWork":"","hours":""},
-{"id":23,"name":"CTS Builders","suite":"","floor":"","tags":["construction","development"],"description":"Design/build, construction management, land development, and owners\u2019 representation.","website":"https://cts-builders.com/","phone":"","email":"","linkedin":"https://www.linkedin.com/company/cts-builders","instagram":"","people":[],"domain":"cts-builders.com","notableClients":"","notableWork":"","hours":""},
-{"id":24,"name":"Empower Physical Therapy","suite":"306","floor":"3","tags":["health","wellness","physical therapy"],"description":"Pelvic health and orthopedic physical therapy clinic. In-clinic, virtual, and home visit options. Founded by Dr. Julia Rosenthal, DPT.","website":"https://www.empowerpt.nyc/","phone":"(332) 334-7909","email":"","linkedin":"","instagram":"","people":[{"name":"Julia Rosenthal, DPT","title":"Founder"}],"domain":"empowerpt.nyc","notableClients":"","notableWork":"","hours":""},
-{"id":25,"name":"McMahon, Martine & Gallagher","suite":"720","floor":"7","tags":["legal"],"description":"Law firm specializing in insurance defense, litigation, personal injury, premises liability, medical malpractice, and toxic torts. Founded 1958, 18 attorneys.","website":"https://www.mmglawyers.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"mmglawyers.com","notableClients":"","notableWork":"","hours":""},
-{"id":26,"name":"Kaishian & Mortazavi LLC","suite":"461/508","floor":"4","tags":["legal","civil rights"],"description":"Law firm specializing in civil rights and criminal defense.","website":"https://kaishianlaw.com/","phone":"(347) 662-2421","email":"","linkedin":"","instagram":"","people":[{"name":"Maryanne K. Kaishian","title":"Partner"},{"name":"S. Masoud Mortazavi","title":"Partner"}],"domain":"kaishianlaw.com","notableClients":"","notableWork":"","hours":""},
-{"id":27,"name":"Full English Post","suite":"624","floor":"6","tags":["audio","post-production","sound design","mixing","podcast"],"description":"Boutique audio post-production studio specializing in commercials, branded content, film, TV, cinema, and podcast production. Founded 2016 by Kieran Kaye. Three full studios plus The Podcast Suites.","website":"https://fullenglish.co/","phone":"(917) 426-5429","email":"hello@fullenglish.co","linkedin":"https://www.linkedin.com/company/fullenglishpost","instagram":"fullenglishpost","people":[{"name":"Kieran Kaye","title":"Founder & Head of Audio"},{"name":"Jenise Morgan","title":"Producer"},{"name":"Jason Kaye","title":"Head of Business Development"},{"name":"Charles Atangana","title":"Sound Designer / Mixer"},{"name":"Ben Steiner","title":"Sound Designer / Mixer"}],"domain":"fullenglish.co","notableClients":"Apple TV+, Netflix, Sony, Sally Hansen, Jose Cuervo, Zillow; game trailers including Elden Ring: Shadow of the Erdtree","notableWork":"","hours":"Monday\u2013Friday, 9am\u20136pm"},
-{"id":28,"name":"Maisonette","suite":"620","floor":"6","tags":["e-commerce","retail","kids","lifestyle","brand"],"description":"Curated baby and kids\u2019 luxury marketplace. Stylish, premium alternative to mass-market kids\u2019 retail. Founded 2017.","website":"https://maisonette.com/","phone":"(212) 796-2300","email":"","linkedin":"","instagram":"","people":[],"domain":"maisonette.com","notableClients":"","notableWork":"","hours":""},
-{"id":29,"name":"5 Plus 5 Gallery","suite":"","floor":"","tags":["art","gallery"],"description":"Art gallery within the building.","website":"","phone":"(718) 488-8383","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":30,"name":"Equinox DUMBO","suite":"","floor":"","tags":["fitness","luxury","wellness"],"description":"Luxury fitness center. 22,000 sq ft with strength training, three studios, spa, juice bar, lounge, and infinity pool with Brooklyn Bridge views.","website":"https://www.equinox.com/clubs/new-york/brooklyn/dumbo","phone":"(347) 435-2341","email":"","linkedin":"","instagram":"","people":[],"domain":"equinox.com","notableClients":"","notableWork":"","hours":""},
-{"id":31,"name":"Gleason\u2019s Gym","suite":"","floor":"","tags":["fitness","boxing","historic"],"description":"Largest and oldest active boxing gym in the United States. Has produced 129 World Champions and 2 Olympic Gold Medalists.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"gleasonsgym.com","notableClients":"","notableWork":"","hours":""},
-{"id":32,"name":"Peas & Pickles","suite":"1","floor":"1","tags":["retail","food","market"],"description":"24-hour supermarket with fresh produce, hot and cold food bar, sandwiches, and bagels.","website":"","phone":"(718) 488-8336","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":"Open 24 hours"},
-{"id":33,"name":"April Hannah","suite":"714","floor":"7","tags":["art","painting","sculpture"],"description":"Abstract painter and sculptor. MFA from School of Visual Arts. Museum of Arts and Design Artist Studios Residency Award (2010).","website":"https://www.aprilhannah.com/","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"April Hannah","title":"Artist"}],"domain":"aprilhannah.com","notableClients":"","notableWork":"","hours":""},
-{"id":34,"name":"Susan Homer","suite":"","floor":"","tags":["art","studio"],"description":"Artist with studio in the building. Featured in NY Magazine and Domino Magazine. Participates in DUMBO Open Studios.","website":"https://www.susanhomer.com/","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"Susan Homer","title":"Artist"}],"domain":"susanhomer.com","notableClients":"","notableWork":"","hours":""},
-{"id":35,"name":"Office JDY Architecture","suite":"335","floor":"3","tags":["architecture","interior design","project strategy"],"description":"Architecture, interiors, and project strategy firm. Multidisciplinary practice handling residential, commercial, and institutional projects.","website":"https://www.officejdy.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"officejdy.com","notableClients":"","notableWork":"","hours":""},
-{"id":36,"name":"SA-DA Architecture","suite":"555","floor":"5","tags":["architecture","interior design","residential","commercial"],"description":"Multidisciplinary architectural practice providing residential and commercial design services. Listed among Brownstoner\u2019s top Brooklyn interior design firms.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":37,"name":"Romines Architecture PLLC","suite":"709","floor":"7","tags":["architecture","design"],"description":"Architecture firm.","website":"http://www.rominesarchitecture.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"rominesarchitecture.com","notableClients":"","notableWork":"","hours":""},
-{"id":38,"name":"Robinson + Grisaru Architecture","suite":"711","floor":"7","tags":["architecture","design"],"description":"Architecture firm. Member of AIA Brooklyn chapter.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":39,"name":"Format Architecture Office","suite":"312D","floor":"3","tags":["architecture","design","urban"],"description":"Architecture and design practice.","website":"https://format.nyc/about","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"format.nyc","notableClients":"","notableWork":"","hours":""},
-{"id":40,"name":"Dencityworks","suite":"713","floor":"7","tags":["architecture","mixed-use","multifamily","cultural"],"description":"Architecture firm focusing on mixed-use, multifamily, cultural, and office projects. Established 2021.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":41,"name":"Cornerstone Agency","suite":"908","floor":"9","tags":["talent","marketing","lifestyle","music","PR"],"description":"Creative lifestyle marketing and PR agency founded in 1996. Co-founded by Rob Stone, who also co-founded The Fader. Manages talent and produces cultural marketing campaigns.","website":"https://www.cornerstoneagency.com/","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"Rob Stone","title":"Founder (also co-founded The Fader)"}],"domain":"cornerstoneagency.com","notableClients":"","notableWork":"","hours":""},
-{"id":42,"name":"The Gotham Film & Media Institute","suite":"324","floor":"3","tags":["nonprofit","film","media","independent film"],"description":"Formerly the Independent Filmmaker Project (IFP). The Gotham is the leading nonprofit dedicated to independent film and media. Presents the annual Gotham Awards and runs filmmaker labs.","website":"https://thegotham.org/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"thegotham.org","notableClients":"","notableWork":"","hours":""},
-{"id":43,"name":"Romp Film LLC","suite":"712","floor":"7","tags":["film","production"],"description":"Film production company. Registered LLC since 2008.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":44,"name":"Greg Miller Photography","suite":"","floor":"","tags":["photography","fine art","commercial"],"description":"Fine art and commercial photographer with 30+ years of experience. Studio in building.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"Greg Miller","title":"Photographer"}],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":45,"name":"Anne Peabody","suite":"455","floor":"4","tags":["art","sculpture","functional art","performance"],"description":"Artist creating functional art, drawings, sculptures, and performance pieces. Studio in building.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[{"name":"Anne Peabody","title":"Artist"}],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":46,"name":"The Sculptors Guild","suite":"256","floor":"2","tags":["art","sculpture","nonprofit","artist collective"],"description":"Artist-run organization founded in 1937 dedicated to promoting contemporary sculpture. One of the oldest artist organizations in the US.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":47,"name":"Brompton Bicycle USA","suite":"253A","floor":"2","tags":["bicycle","manufacturing","retail","UK brand"],"description":"US office for Brompton, the UK\u2019s largest bicycle manufacturer. Famous for their folding bikes. This is their American operations base.","website":"https://us.brompton.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"us.brompton.com","notableClients":"","notableWork":"","hours":""},
-{"id":48,"name":"Blue Collective","suite":"","floor":"","tags":["venture capital","investment","startup"],"description":"Venture capital and investment firm.","website":"https://bluecollective.com/","phone":"+1 929-295-6711","email":"blue@bluecollective.com","linkedin":"","instagram":"","people":[],"domain":"bluecollective.com","notableClients":"","notableWork":"","hours":""},
-{"id":49,"name":"Dash","suite":"","floor":"","tags":["software","tech","app"],"description":"Software development company.","website":"https://dashwith.me","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"dashwith.me","notableClients":"","notableWork":"","hours":""},
-{"id":50,"name":"Recycle-A-Bicycle","suite":"","floor":"","tags":["nonprofit","bicycle","education","youth"],"description":"Bicycle service and youth education nonprofit. Teaches bike repair and promotes cycling as transportation and recreation.","website":"","phone":"(718) 858-2972","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":51,"name":"RXR Sports","suite":"","floor":"","tags":["talent management","sports","entertainment"],"description":"Elite athlete and artist management agency.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":52,"name":"Intently","suite":"","floor":"","tags":["marketing","digital"],"description":"Marketing company.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":53,"name":"Steven Cohn & Richard Goldberg","suite":"312-D","floor":"3","tags":["legal"],"description":"Law office at 55 Washington Street.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":54,"name":"Law Office of Jonathan Mason-Kinsey","suite":"","floor":"","tags":["legal"],"description":"Law office at 55 Washington Street.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":55,"name":"Kenneth Montgomery, Esq.","suite":"","floor":"","tags":["legal"],"description":"Law office at 55 Washington Street.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":56,"name":"Inch, Inc.","suite":"654","floor":"6","tags":["product design","industrial design","engineering","manufacturing","medical devices"],"description":"Product design and engineering consultancy. Takes products from concept through industrial design, mechanical engineering, electronics, and manufacturing. Founded 1990 \u2014 over 35 years in operation.","website":"https://www.inchnyc.com/","phone":"(718) 260-0069","email":"info@inchnyc.com","linkedin":"","instagram":"","people":[{"name":"Timothy Eberhardt","title":"Principal"},{"name":"Benjamen Centeno","title":"Designer"},{"name":"Kola Lolo","title":"Designer"}],"domain":"inchnyc.com","notableClients":"","notableWork":"Two I.D. Magazine Gold Awards; work featured in The New York Times, Wall Street Journal, Inc. Magazine, and London Design Museum; medical jet injector vaccination device with the Jean-Abraham Foundation","hours":""},
-{"id":57,"name":"VR Studio (Suite 618)","suite":"618","floor":"6","tags":["VR","XR","immersive","virtual production"],"description":"VR or XR production studio identified at Suite 618. Identity unconfirmed \u2014 company has minimal web presence or is operating pre-launch.","website":"","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"","notableClients":"","notableWork":"","hours":""},
-{"id":58,"name":"Ask Media (Suite 612)","suite":"612","floor":"6","tags":["media","digital","content","performance marketing"],"description":"Signage identified at Suite 612. Potentially Ask Media Group (IAC), the performance marketing company operating Ask.com across health, finance, and consumer verticals. Identity low confidence.","website":"https://www.askmediagroup.com/","phone":"","email":"","linkedin":"","instagram":"","people":[],"domain":"askmediagroup.com","notableClients":"","notableWork":"","hours":""}
-];
-
-/* ── DISCIPLINE LABEL ───────────────────────────────────── */
-function disciplineLabel(c){
-  const map={
-    'agency':'Creative Agency','production':'Film & Production',
-    'documentary':'Documentary Film','architecture':'Architecture',
-    'interior design':'Interior Design','design':'Design Studio',
-    'art':'Fine Art','media':'Media & Publishing',
-    'pr':'Public Relations','legal':'Legal Services',
-    'health':'Health & Wellness','nonprofit':'Nonprofit',
-    'startup':'Startup','tech':'Technology',
-    'edtech':'Education Technology','education':'Education',
-    'fitness':'Fitness & Wellness','audio':'Audio Post-Production',
-    'film':'Film & Production','construction':'Construction',
-    'talent':'Talent Management','e-commerce':'E-Commerce',
-    'venture capital':'Venture Capital','bicycle':'Bicycle & Manufacturing',
-    'beverage':'Beverage & Import','photography':'Photography',
-    'sculpture':'Sculpture','painting':'Fine Art',
-    'retail':'Retail','software':'Software',
-    'experiential':'Experiential Marketing',
-  };
-  for(const tag of c.tags){
-    const t=tag.toLowerCase();
-    if(map[t])return map[t];
-  }
-  const t=c.tags[0]||'';
-  return t?t.charAt(0).toUpperCase()+t.slice(1):'Member';
-}
-
-/* ── AVATAR ─────────────────────────────────────────────── */
-const AVATAR_BG='#2A3B2E';
-function avatarDiv(company,size){
-  const s=size||44;const r=s>=60?4:3;
-  const initial=(company.name.match(/[A-Za-z]/)||['?'])[0].toUpperCase();
-  return `<div style="width:${s}px;height:${s}px;border-radius:${r}px;background:${AVATAR_BG};display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:${Math.round(s*0.38)}px;color:#C4A265;flex-shrink:0">${initial}</div>`;
-}
-
-/* ── LOGO ───────────────────────────────────────────────── */
-function makeLogo(company,size){
-  const s=size||44;
-  if(!company.domain)return avatarDiv(company,s);
-  const initial=(company.name.match(/[A-Za-z]/)||['?'])[0].toUpperCase();
-  const r=s>=60?4:3;
-  return `<img class="co-logo" src="https://logo.clearbit.com/${company.domain}" data-domain="${company.domain}" data-state="0" data-initial="${initial}" data-size="${s}" data-radius="${r}" style="width:${s}px;height:${s}px;object-fit:contain;display:block;padding:2px" loading="lazy" alt="${company.name} logo">`;
-}
-document.addEventListener('error',function(e){
-  const img=e.target;
-  if(!img.classList||!img.classList.contains('co-logo'))return;
-  const state=parseInt(img.dataset.state||'0');
-  if(state===0){
-    img.dataset.state='1';
-    img.src=`https://www.google.com/s2/favicons?domain=${img.dataset.domain}&sz=128`;
-    img.style.padding='8px';img.style.objectFit='cover';
-  } else {
-    const s=parseInt(img.dataset.size);const r=img.dataset.radius;
-    const div=document.createElement('div');
-    div.style.cssText=`width:${s}px;height:${s}px;border-radius:${r}px;background:${AVATAR_BG};display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:${Math.round(s*0.38)}px;color:#C4A265;flex-shrink:0`;
-    div.textContent=img.dataset.initial;
-    if(img.parentNode)img.parentNode.replaceChild(div,img);
-  }
-},true);
-
-/* ── FLOOR LABEL ────────────────────────────────────────── */
-function floorLabel(c){
-  if(c.suite&&c.floor)return `Floor ${c.floor} \u00b7 Suite ${c.suite.split('(')[0].trim()}`;
-  if(c.floor)return `Floor ${c.floor}`;
-  if(c.suite)return `Suite ${c.suite.split('(')[0].trim()}`;
-  return 'Location unlisted';
-}
-
-/* ── CARD ───────────────────────────────────────────────── */
-function renderCard(c,delay){
-  const tagHtml=c.tags.slice(0,4).map(t=>`<span class="card-tag">${t}</span>`).join('');
-  const floorInfo=c.floor?`<div class="card-floor">Floor ${c.floor}${c.suite?' \u00b7 Suite '+c.suite.split('(')[0].trim():''}</div>`:'';
-  return `<div class="card" data-id="${c.id}" style="animation-delay:${delay}s">
-    ${floorInfo}
-    <div class="card-name">${c.name}</div>
-    <div class="card-discipline">${disciplineLabel(c)}</div>
-    <div class="card-desc">${c.description}</div>
-    <div class="card-tags">${tagHtml}</div>
-    <div class="card-view">View Profile &rsaquo;</div>
-  </div>`;
-}
-
-/* ── MODAL ──────────────────────────────────────────────── */
-let modalOpen=false;
-function openModal(id){
-  const c=companies.find(x=>x.id===id);if(!c)return;
-  const headerHtml=`
-    <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
-    <div class="modal-logo-row">
-      <div class="modal-logo-wrap">${makeLogo(c,80)}</div>
-      <div class="modal-name-block">
-        <div class="modal-name">${c.name}</div>
-        <div class="modal-discipline">${disciplineLabel(c)}</div>
-        <div class="modal-residence">${floorLabel(c)}</div>
-      </div>
-    </div>`;
-  document.getElementById('modalHeader').innerHTML=headerHtml;
-  let body=`<div class="modal-section"><div class="section-label">About</div><div class="modal-desc">${c.description}</div></div>`;
-  const contacts=[];
-  if(c.website)contacts.push(`<div class="contact-row"><span class="contact-icon">&#9679;</span><div>Website &nbsp;<a href="${c.website}" target="_blank" rel="noopener">${c.website.replace(/https?:\/\//,'')}</a></div></div>`);
-  if(c.phone)contacts.push(`<div class="contact-row"><span class="contact-icon">&#9679;</span><div>${c.phone}</div></div>`);
-  if(c.email)contacts.push(`<div class="contact-row"><span class="contact-icon">&#9679;</span><div><a href="mailto:${c.email.split('|')[0].trim()}">${c.email}</a></div></div>`);
-  if(c.linkedin)contacts.push(`<div class="contact-row"><span class="contact-icon">&#9679;</span><div>LinkedIn &nbsp;<a href="${c.linkedin}" target="_blank" rel="noopener">Profile</a></div></div>`);
-  if(c.instagram)contacts.push(`<div class="contact-row"><span class="contact-icon">&#9679;</span><div>Instagram &nbsp;<a href="https://instagram.com/${c.instagram}" target="_blank" rel="noopener">@${c.instagram}</a></div></div>`);
-  if(c.hours)contacts.push(`<div class="contact-row"><span class="contact-icon">&#9679;</span><div>${c.hours}</div></div>`);
-  if(contacts.length)body+=`<div class="modal-section"><div class="section-label">Contact</div><div class="contact-grid">${contacts.join('')}</div></div>`;
-  if(c.people&&c.people.length){
-    const people=c.people.map(p=>`<div class="person-card"><div class="person-name">${p.name}</div><div class="person-title">${p.title}</div></div>`).join('');
-    body+=`<div class="modal-section"><div class="section-label">Key People</div><div class="person-list">${people}</div></div>`;
-  }
-  if(c.notableClients)body+=`<div class="modal-section"><div class="section-label">Notable Clients</div><div class="notable-text">${c.notableClients}</div></div>`;
-  if(c.notableWork)body+=`<div class="modal-section"><div class="section-label">Notable Work</div><div class="notable-text">${c.notableWork}</div></div>`;
-  document.getElementById('modalBody').innerHTML=body;
-  const footer=c.website
-    ?`<a href="${c.website}" target="_blank" rel="noopener" class="btn-primary">Visit Website</a><button class="btn-secondary" onclick="closeModal()">Close</button>`
-    :`<button class="btn-secondary" style="flex:1" onclick="closeModal()">Close</button>`;
-  document.getElementById('modalFooter').innerHTML=footer;
-  document.getElementById('modalScroll').scrollTop=0;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';modalOpen=true;
-  document.getElementById('modalCloseBtn').addEventListener('click',closeModal);
-}
-function closeModal(){
-  if(!modalOpen)return;
-  document.getElementById('modalOverlay').classList.remove('open');
-  setTimeout(()=>{document.body.style.overflow=''},420);modalOpen=false;
-}
-document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
-document.getElementById('modalPanel').addEventListener('click',function(e){e.stopPropagation()});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
-
-/* ── FILTERS ────────────────────────────────────────────── */
-const mainCategories=[
-  {label:'All',tags:null},
-  {label:'Agencies',tags:['agency','experiential']},
-  {label:'Production',tags:['production','film','documentary','audio','podcast']},
-  {label:'Architecture',tags:['architecture','interior design']},
-  {label:'Design',tags:['design','branding','web','letterpress','stationery','product design','industrial design']},
-  {label:'Art',tags:['art','painting','sculpture','gallery','photography']},
-  {label:'Media',tags:['media','publishing','music','events','culture']},
-];
-let activeCategory=null,activeFloor=null,searchTerm='';
-
-function buildFloorFilters(){
-  const row=document.getElementById('floorRow');
-  const allBtn=document.createElement('button');
-  allBtn.className='floor-btn active';allBtn.textContent='All';
-  allBtn.onclick=()=>{activeFloor=null;updateFloors();render()};
-  row.appendChild(allBtn);
-  for(let f=1;f<=9;f++){
-    const btn=document.createElement('button');
-    btn.className='floor-btn';btn.textContent=f;
-    btn.onclick=()=>{activeFloor=String(f);updateFloors();render()};
-    row.appendChild(btn);
-  }
-}
-function updateFloors(){
-  document.querySelectorAll('.floor-btn').forEach((b,i)=>{
-    b.classList.toggle('active',i===0?activeFloor===null:activeFloor===String(i));
-  });
-}
-function buildNav(){
-  const nav=document.getElementById('catNav');
-  mainCategories.forEach((cat,i)=>{
-    const btn=document.createElement('button');
-    btn.className='cat-link'+(i===0?' active':'');
-    btn.textContent=cat.label;
-    btn.addEventListener('click',function(){
-      activeCategory=cat.tags;
-      document.querySelectorAll('.cat-link').forEach(b=>b.classList.remove('active'));
-      this.classList.add('active');render();
-    });
-    nav.appendChild(btn);
-  });
-}
-function matchesSearch(c,term){
-  if(!term)return true;
-  const t=term.toLowerCase();
-  const blob=[c.name,c.description,c.suite,c.notableClients,c.notableWork,...c.tags,...c.people.map(p=>p.name+' '+p.title)].join(' ').toLowerCase();
-  return blob.includes(t);
-}
-function matchesCategory(c){
-  if(!activeCategory)return true;
-  return activeCategory.some(t=>c.tags.some(ct=>ct.toLowerCase().includes(t.toLowerCase())));
-}
-function matchesFloor(c){if(!activeFloor)return true;return c.floor===activeFloor}
-
-/* ── RENDER ─────────────────────────────────────────────── */
-function render(){
-  const filtered=companies.filter(c=>matchesSearch(c,searchTerm)&&matchesCategory(c)&&matchesFloor(c));
-  const grid=document.getElementById('grid');
-  const noResults=document.getElementById('noResults');
-  const countBar=document.getElementById('countBar');
-  if(!filtered.length){
-    grid.innerHTML='';noResults.style.display='block';countBar.textContent='';
-  } else {
-    noResults.style.display='none';
-    grid.innerHTML=filtered.map((c,i)=>renderCard(c,Math.min(i*0.03,0.3))).join('');
-    countBar.textContent=filtered.length===companies.length?`${companies.length} Members`:`${filtered.length} of ${companies.length}`;
-  }
-}
-document.getElementById('grid').addEventListener('click',function(e){
-  const card=e.target.closest('.card');
-  if(card)openModal(parseInt(card.dataset.id));
-});
-document.getElementById('searchInput').addEventListener('input',function(e){
-  searchTerm=e.target.value.trim();render();
-});
-
-/* ── BRONZE MAP SCROLL REVEAL ───────────────────────────── */
+/* Bronze map scroll reveal */
 (function(){
   const map=document.getElementById('bronzeMap');
   if(!map)return;
-  const sections=document.querySelectorAll('section,.about,.events,.join-section,#directory');
   let lastLevel=0;
   function updateMap(){
     const scrollY=window.scrollY;
@@ -973,25 +360,13 @@ document.getElementById('searchInput').addEventListener('input',function(e){
     const docH=document.documentElement.scrollHeight;
     const progress=scrollY/(docH-vh);
     let level=0;
-    if(progress>.05)level=1;
-    if(progress>.2)level=2;
-    if(progress>.4)level=3;
-    if(progress>.6)level=4;
-    if(level!==lastLevel){
-      map.className='bronze-map'+(level>0?' reveal-'+level:'');
-      lastLevel=level;
-    }
-    // Subtle parallax shift
-    const tx=(scrollY*0.02)%20;
-    const ty=scrollY*0.015;
-    map.querySelector('svg').style.transform=`rotateX(12deg) scale(1.1) translateY(${-ty*0.3}px)`;
+    if(progress>.05)level=1;if(progress>.2)level=2;if(progress>.4)level=3;if(progress>.6)level=4;
+    if(level!==lastLevel){map.className='bronze-map'+(level>0?' reveal-'+level:'');lastLevel=level;}
+    map.querySelector('svg').style.transform='rotateX(12deg) scale(1.1) translateY('+(-(scrollY*0.015)*0.3)+'px)';
   }
   window.addEventListener('scroll',updateMap,{passive:true});
   updateMap();
 })();
-
-/* ── INIT ───────────────────────────────────────────────── */
-buildNav();buildFloorFilters();render();
 </script>
 </body>
 </html>
