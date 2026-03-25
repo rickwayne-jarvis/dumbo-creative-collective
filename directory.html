@@ -378,7 +378,7 @@ document.addEventListener('error',function(e){
 /* CARD */
 function renderCard(c,delay){
   const tagHtml=c.tags.slice(0,4).map(t=>`<span class="card-tag">${t}</span>`).join('');
-  const floorInfo=c.suite?`<span class="card-floor">Fl ${c.floor} / ${c.suite}</span>`:'';
+  const floorInfo=c.suite?`<span class="card-floor">55 Washington St, Ste ${c.suite}</span>`:`<span class="card-floor">55 Washington St</span>`;
   return `<div class="card" data-id="${c.id}" style="animation-delay:${delay}s">
     <div class="card-header"><div class="card-name">${c.name}</div>${floorInfo}</div>
     <div class="card-discipline">${disciplineLabel(c)}</div>
@@ -399,10 +399,12 @@ function openModal(id){
   h.innerHTML=`<button class="modal-close" onclick="closeModal()">&times;</button>
     <div class="modal-logo-row"><div class="modal-logo-wrap">${logo}</div>
     <div class="modal-name-block"><div class="modal-name">${c.name}</div><div class="modal-discipline">${disciplineLabel(c)}</div>
-    <div class="modal-residence">${c.suite?'Floor '+c.floor+' / Suite '+c.suite:'DUMBO, Brooklyn'}</div></div></div>`;
+    <div class="modal-residence">${c.suite?'55 Washington St, Suite '+c.suite+', DUMBO, Brooklyn NY 11201':'55 Washington St, DUMBO, Brooklyn NY 11201'}</div></div></div>`;
   let body=`<div class="modal-section"><div class="section-label">About</div><div class="modal-desc">${c.description}</div></div>`;
   if(c.people.length){body+=`<div class="modal-section"><div class="section-label">Key People</div><div class="person-list">${c.people.map(p=>`<div class="person-card"><div class="person-name">${p.name}</div><div class="person-title">${p.title}</div></div>`).join('')}</div></div>`}
   const contacts=[];
+  const addr=c.suite?`55 Washington St, Suite ${c.suite}, Brooklyn NY 11201`:'55 Washington St, Brooklyn NY 11201';
+  contacts.push(`<div class="contact-row"><span class="contact-icon" style="font-size:10px">&#9873;</span>${addr}</div>`);
   if(c.website)contacts.push(`<div class="contact-row"><span class="contact-icon">W</span><a href="${c.website}" target="_blank" rel="noopener">${c.domain||'Website'}</a></div>`);
   if(c.phone)contacts.push(`<div class="contact-row"><span class="contact-icon">T</span>${c.phone}</div>`);
   if(c.email)contacts.push(`<div class="contact-row"><span class="contact-icon">E</span>${c.email}</div>`);
