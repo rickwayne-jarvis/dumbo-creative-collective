@@ -25,6 +25,14 @@ a:hover{opacity:.75}
 ::selection{background:rgba(196,162,101,.25);color:var(--cream)}
 img{display:block;max-width:100%}
 
+/* ═══ GLOBAL NAV ═══ */
+.global-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 32px;pointer-events:none}
+.global-nav a{pointer-events:all}
+.nav-logo{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--cream);letter-spacing:1px;opacity:.7;transition:opacity .3s}
+.nav-logo:hover{opacity:1;color:var(--cream)}
+.nav-login{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);padding:10px 28px;border:1px solid var(--gold-line);border-radius:50px;transition:all .3s;pointer-events:all;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(15,14,10,.5)}
+.nav-login:hover{background:rgba(196,162,101,.1);border-color:var(--gold);color:var(--cream);opacity:1}
+
 /* ═══ BRONZE MAP ═══ */
 .bronze-map{position:fixed;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;perspective:1200px}
 .bronze-map svg{width:min(100vw,1400px);height:auto;transform:rotateX(12deg) scale(1.1);transform-origin:center 60%;transition:opacity 1.2s cubic-bezier(.25,.46,.45,.94)}
@@ -210,6 +218,12 @@ img{display:block;max-width:100%}
 </style>
 </head>
 <body>
+
+<!-- ═══ GLOBAL NAV ═══ -->
+<nav class="global-nav">
+  <a href="index.html" class="nav-logo">DCC</a>
+  <a href="directory.html" class="nav-login">Members Login</a>
+</nav>
 
 <!-- ═══ BRONZE ELEVATION MAP ═══ -->
 <div class="bronze-map" id="bronzeMap">
