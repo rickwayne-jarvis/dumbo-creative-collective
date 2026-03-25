@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUMBO Creative Collective — The Creative Hub</title>
+<meta name="description" content="The creative directory connecting DUMBO's agencies, studios, artists, and makers. 58+ companies at 55 Washington Street, Brooklyn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0A;--card:#141414;--card-hover:#1a1a1a;--gold:#D4A544;--red:#E31837;--text:#F5F5F5;--dim:rgba(245,245,245,0.6);--muted:#666;--border:#222;--tag-bg:rgba(212,165,68,0.12);--tag-text:#D4A544}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600}
+a{color:var(--gold);text-decoration:none;transition:opacity 0.2s}
+a:hover{opacity:0.8}
+
+/* HERO */
+.hero{position:relative;padding:80px 24px 48px;text-align:center;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,165,68,0.08) 0%,transparent 70%);pointer-events:none}
+.hero h1{font-size:clamp(32px,6vw,56px);letter-spacing:-1px;margin-bottom:12px;position:relative}
+.hero h1 span{color:var(--gold)}
+.hero .tagline{font-size:clamp(14px,2.5vw,18px);color:var(--dim);max-width:600px;margin:0 auto 24px;line-height:1.5}
+.hero .stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+.hero .stat{text-align:center}
+.hero .stat-num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--gold)}
+.hero .stat-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.bridge-icon{font-size:48px;margin-bottom:16px;opacity:0.3}
+
+/* CONTROLS */
+.controls{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);padding:16px 24px;border-bottom:1px solid var(--border)}
+.search-wrap{max-width:800px;margin:0 auto 12px;position:relative}
+.search-wrap input{width:100%;padding:12px 16px 12px 44px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:15px;outline:none;transition:border-color 0.2s}
+.search-wrap input:focus{border-color:var(--gold)}
+.search-wrap input::placeholder{color:var(--muted)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:18px}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:4px 0;max-width:800px;margin:0 auto;scrollbar-width:none;-ms-overflow-style:none}
+.filters::-webkit-scrollbar{display:none}
+.filter-pill{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--dim);font-size:13px;cursor:pointer;white-space:nowrap;transition:all 0.2s;font-family:'Inter',sans-serif}
+.filter-pill:hover{border-color:var(--gold);color:var(--text)}
+.filter-pill.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:500}
+.floor-filters{display:flex;gap:6px;justify-content:center;margin-top:8px;max-width:800px;margin-left:auto;margin-right:auto}
+.floor-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--dim);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-family:'Space Grotesk',sans-serif}
+.floor-btn:hover{border-color:var(--gold);color:var(--text)}
+.floor-btn.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:600}
+.result-count{text-align:center;color:var(--muted);font-size:13px;margin-top:8px}
+
+/* GRID */
+.grid{max-width:1200px;margin:32px auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+@media(max-width:400px){.grid{grid-template-columns:1fr}}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.3s;cursor:default;position:relative;overflow:hidden}
+.card:hover{background:var(--card-hover);border-color:rgba(212,165,68,0.3);transform:translateY(-2px)}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.card-name{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;line-height:1.3;flex:1}
+.card-suite{font-size:12px;color:var(--muted);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:4px;white-space:nowrap;margin-left:8px}
+.card-desc{font-size:14px;color:var(--dim);line-height:1.5;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{padding:3px 10px;border-radius:12px;background:var(--tag-bg);color:var(--tag-text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px}
+.card-contact{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--dim);border-top:1px solid var(--border);padding-top:12px;margin-top:auto}
+.card-contact a{color:var(--gold);font-size:13px}
+.card-people{margin-top:10px;border-top:1px solid var(--border);padding-top:10px}
+.card-people h4{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.person{font-size:13px;color:var(--dim);margin-bottom:3px}
+.person strong{color:var(--text);font-weight:500}
+.card-links{display:flex;gap:12px;margin-top:12px}
+.card-link{padding:6px 14px;border-radius:8px;border:1px solid var(--border);color:var(--dim);font-size:12px;transition:all 0.2s;display:inline-flex;align-items:center;gap:4px}
+.card-link:hover{border-color:var(--gold);color:var(--gold)}
+
+/* FOOTER */
+footer{text-align:center;padding:48px 24px;border-top:1px solid var(--border);margin-top:48px}
+footer p{color:var(--muted);font-size:13px;line-height:1.6}
+footer .addr{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--dim);margin-bottom:8px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card{animation:fadeUp 0.4s ease both}
+.no-results{text-align:center;padding:80px 24px;color:var(--muted);font-size:16px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="bridge-icon">&#x1F309;</div>
+    <h1><span>DUMBO</span> Creative Collective</h1>
+    <p class="tagline">The creative hub connecting DUMBO's agencies, studios, artists, and makers. One building. Sixty companies. Every creative discipline.</p>
+    <div class="stats">
+        <div class="stat"><div class="stat-num">59</div><div class="stat-label">Companies</div></div>
+        <div class="stat"><div class="stat-num">9</div><div class="stat-label">Floors</div></div>
+        <div class="stat"><div class="stat-num">110</div><div class="stat-label">Disciplines</div></div>
+    </div>
+</div>
+
+<div class="controls">
+    <div class="search-wrap">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="searchInput" placeholder="Search companies, people, tags, services..." autocomplete="off">
+    </div>
+    <div class="filters" id="categoryFilters"></div>
+    <div class="floor-filters" id="floorFilters"></div>
+    <div class="result-count" id="resultCount"></div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="no-results" id="noResults" style="display:none">
+    No companies match your search. Try a different term.
+</div>
+
+<footer>
+    <p class="addr">55 Washington Street, DUMBO, Brooklyn NY 11201</p>
+    <p>Managed by Two Trees Management Co. &middot; Powered by DUMBO Creative Collective</p>
+</footer>
+
+<script>
+const companies = [{"id": 0, "name": "BRAND IMAGINATION GROUP (BiG)", "suite": "650 (formerly Spike Lee's SpikeDDB)", "floor": "6", "tags": ["agency", "production", "creative", "brand", "advertising"], "description": "Hybrid creative agency and production company. Full-service brand strategy, integrated creative, and cinematic production under one roof. Cannes-caliber creative with production capability baked in.", "website": "https://gobig.nyc/", "phone": "", "email": "", "linkedin": "https://www.linkedin.com/company/brand-imagination-group", "people": [{"name": "Rick Wayne", "title": "Executive Creative Director / Cinematic Director"}, {"name": "Barry Krause", "title": "CEO (former CEO, Publicis North America)"}, {"name": "Samuel Lucas Gove", "title": "Design Director"}]}, {"id": 1, "name": "SN\u00d8HETTA", "suite": "900 (25,000 sq ft)", "floor": "9", "tags": ["architecture", "design", "landscape", "interior design"], "description": "International integrated architecture and design studio spanning architecture, landscape architecture, interior architecture, product design, graphic and digital design. Recently relocated NYC HQ from Manhattan to DUMBO.", "website": "https://www.snohetta.com/", "phone": "(646) 383-4762", "email": "contact@snohetta.com", "linkedin": "https://www.linkedin.com/company/snohetta", "people": [{"name": "Kjetil Tr\u00e6dal Thorsen", "title": "Founder & Partner"}, {"name": "Craig Dykers", "title": "Co-Founder & Partner"}, {"name": "Isabella Alveberg", "title": "Group CEO"}, {"name": "Elaine Molinar", "title": "Managing Director & Partner (leads Brooklyn operations)"}]}, {"id": 2, "name": "BIG SPACESHIP (SPCSHP)", "suite": "512", "floor": "5", "tags": ["agency", "digital", "creative", "strategy", "design"], "description": "Digital creative agency specializing in digital strategy, design, data analytics, and integrated marketing communications. Acquired by MSQ in October 2024.", "website": "https://www.bigspaceship.com/", "phone": "(718) 222-0281", "email": "info@bigspaceship.com", "linkedin": "https://www.linkedin.com/company/bigspaceship", "people": [{"name": "Michael Lebowitz", "title": "Co-Founder & CEO"}, {"name": "Harry Garcia", "title": "Executive Design Director"}]}, {"id": 3, "name": "STORY SYNDICATE", "suite": "655/656", "floor": "6", "tags": ["production", "documentary", "film", "media"], "description": "Documentary film and television production company; also launched a scripted division in 2023. Known for award-winning docs on Netflix, HBO, and major streamers.", "website": "https://www.storysyndicate.com/", "phone": "(718) 230-5111", "email": "info@storysyndicate.com | pr@storysyndicate.com (Press)", "linkedin": "https://www.linkedin.com/company/storysyndicate", "people": [{"name": "Liz Garbus", "title": "Co-Founder & Director (2x Oscar nominee, 2x Emmy winner, Peabody winner)"}, {"name": "Dan Cogan", "title": "Co-Founder (Oscar & Emmy winner)"}, {"name": "Nellie Reed", "title": "Head of Scripted Division"}]}, {"id": 4, "name": "INVISIBLE NORTH", "suite": "450 (4th Floor, 3,797 sq ft)", "floor": "4", "tags": ["agency", "experiential", "brand", "events", "production"], "description": "Female-owned global brand experience agency specializing in experiential marketing, events, film, content, and creative media. ~70-person firm.", "website": "https://invisiblenorth.com/", "phone": "(212) 603-9171", "email": "Hello@InvisibleNorth.com | jobs@invisiblenorth.com", "linkedin": "https://www.linkedin.com/company/invisible-north", "people": [{"name": "Geoff Renaud", "title": "Founder & CEO"}, {"name": "Joshua Wexler", "title": "Co-Founder"}, {"name": "Zo\u00e9 Ganch", "title": "Co-Founder / EVP"}]}, {"id": 5, "name": "FOUNDATION PR", "suite": "4th Floor (5,236 sq ft)", "floor": "4", "tags": ["PR", "communications", "beauty", "lifestyle", "talent"], "description": "Communications agency providing strategy and talent management for beauty, lifestyle, fashion, and wellness brands and personalities. Formerly KFD Public Relations.", "website": "https://www.wearefoundation.co/", "phone": "", "email": "", "linkedin": "https://www.linkedin.com/company/foundation-comms", "people": []}, {"id": 6, "name": "THE FADER", "suite": "908 (5,000 sq ft, Floor 9)", "floor": "9", "tags": ["media", "music", "publishing", "events", "brand"], "description": "Influential music and culture publication covering emerging artists from underground to mainstream. Also operates Fader Films (video production) and live brand activations (Fader Fort).", "website": "https://www.thefader.com/", "phone": "(212) 741-7100", "email": "pr@thefader.com (Press) | advertising@thefader.com (Ad sales)", "linkedin": "https://www.linkedin.com/company/thefader", "people": [{"name": "Jon Cohen", "title": "Co-Founder & CEO"}, {"name": "Naomi Zeichner", "title": "Editor in Chief"}, {"name": "Rob Stone", "title": "Co-Founder (Cornerstone Agency)"}]}, {"id": 7, "name": "AMPLIFY EDUCATION", "suite": "Floor 8", "floor": "8", "tags": ["tech", "education", "edtech", "curriculum"], "description": "Leading K-12 education technology and curriculum company providing next-generation curriculum, formative assessments, and professional development. Serves 21,000+ schools across all 50 states.", "website": "https://amplify.com/", "phone": "(212) 213-8177 | (800) 886-9126 (Toll-free)", "email": "", "linkedin": "https://www.linkedin.com/company/amplifyinc", "people": [{"name": "Larry Berger", "title": "CEO & Co-Founder"}, {"name": "Catherine MacKay", "title": "President & COO"}, {"name": "Aaron Harnly", "title": "CTO"}, {"name": "Kay Moffett", "title": "CMO"}]}, {"id": 8, "name": "SEEN GROUP", "suite": "420", "floor": "4", "tags": ["PR", "beauty", "creative", "influencer", "brand"], "description": "Industry-leading beauty specialist collective offering strategy, creative, communications, and influencer marketing. Divisions include Beauty SEEN, SEEN Works (creative), and Community X SEEN (nano/micro influencer network). Global agency with staff across 6 continents.", "website": "https://www.seengroup.com/", "phone": "+44 (0)207 1869 800", "email": "hello@seengroup.com", "linkedin": "https://www.linkedin.com/company/seen-group", "people": [{"name": "Jane Walsh", "title": "CEO"}]}, {"id": 9, "name": "WHITE ARCHITECTURE STUDIO", "suite": "710", "floor": "7", "tags": ["architecture", "design", "residential", "hospitality"], "description": "Boutique architecture studio specializing in residential, institutional, hospitality, and retail architecture. Founded 2011.", "website": "https://whitearchstudio.com/", "phone": "(718) 924-2303", "email": "", "linkedin": "https://www.linkedin.com/company/white-architecture-studio", "people": [{"name": "Steven Martin White, AIA", "title": "Founder & Principal Architect (30 years experience; former Senior Architect at Safdie Architects)"}]}, {"id": 10, "name": "THE FUTURE FORWARD", "suite": "312A", "floor": "3", "tags": ["agency", "design", "web", "branding", "digital"], "description": "Creative agency specializing in branding, web design, web development, and digital innovation. Part of Multiplica since 2022.", "website": "https://thefutureforward.com/", "phone": "(347) 946-2685", "email": "hello@thefutureforward.com", "linkedin": "https://www.linkedin.com/company/thefutureforward", "people": []}, {"id": 11, "name": "JAKK MEDIA", "suite": "322", "floor": "3", "tags": ["media", "content", "marketing", "SEO"], "description": "Content creation and marketing agency specializing in niche content across lifestyle verticals including mattresses, home security, and fitness.", "website": "https://jakk.media", "phone": "(347) 541-6161", "email": "info@jakk.media", "linkedin": "https://www.linkedin.com/company/jakk-media", "people": [{"name": "Joe Auer", "title": "Co-Founder, Managing Partner"}, {"name": "Kenny Kline", "title": "Co-Founder"}]}, {"id": 12, "name": "BREAKFAST", "suite": "253B", "floor": "2", "tags": ["art", "tech", "installation", "kinetic sculpture", "innovation"], "description": "Fine art and engineering studio specializing in digitally controlled kinetic sculpture. Blends technology with artistic innovation. Over 250 kinetic sculptures created.", "website": "https://breakfaststudio.com/", "phone": "(917) 410-1122", "email": "tiffany@breakfaststudio.com", "linkedin": "https://www.linkedin.com/company/breakfast", "people": [{"name": "Andrew Zolty", "title": "Artist/Founder"}, {"name": "Mattias Gunneras", "title": "Co-Founder"}]}, {"id": 13, "name": "OPEN SEA DESIGN CO.", "suite": "518", "floor": "5", "tags": ["design", "stationery", "letterpress", "brand"], "description": "Fine stationery and paper goods creative studio specializing in design-driven objects for journaling, gifting, and personal correspondence. Inspired by the occult, Victorian era, esoteric traditions, and naturalist art.", "website": "https://openseadesignco.com/", "phone": "+1 305-967-1662", "email": "", "linkedin": "https://www.linkedin.com/company/open-sea-design-co", "people": [{"name": "Melissa Constandse", "title": "Creative Director & Founder (women-owned)"}]}, {"id": 14, "name": "SESAME LETTERPRESS", "suite": "312E", "floor": "3", "tags": ["design", "letterpress", "print", "stationery"], "description": "Fine letterpress stationery and custom design/printing studio. Artisan-made cards and paper gifts. Over 20 years of client collaboration.", "website": "https://sesameletterpress.com/", "phone": "", "email": "info@sesameletterpress.com", "linkedin": "", "people": [{"name": "Breck Hostetter", "title": "Founder (fine arts background, women-owned)"}]}, {"id": 15, "name": "HEY OXFORD", "suite": "", "floor": "", "tags": ["agency", "marketing", "content", "digital"], "description": "Boutique digital-first marketing agency sourcing and managing top content creators for blog posts, e-books, newsletters, and white papers.", "website": "https://heyoxford.com/", "phone": "(203) 930-1442", "email": "", "linkedin": "https://www.linkedin.com/company/hey-oxford", "people": []}, {"id": 16, "name": "NORTHSIDE MEDIA", "suite": "", "floor": "", "tags": ["media", "publishing", "events", "culture"], "description": "Media company producing live experiences, events, and digital content. Publishers of Brooklyn Magazine and The L Magazine. Produces Northside Festival, Taste Talks, and SummerScreen.", "website": "http://northsidemedia.com/", "phone": "(718) 596-3462", "email": "info@northsidemedia.com", "linkedin": "https://www.linkedin.com/company/northside-media-group", "people": [{"name": "Daniel Stedman", "title": "Co-Founder, Publisher of Brooklyn Magazine"}, {"name": "Scott Stedman", "title": "Co-Founder"}]}, {"id": 17, "name": "DATALOT / CENTERFIELD INSURANCE SERVICES", "suite": "559", "floor": "5", "tags": ["tech", "marketing", "insurance", "martech"], "description": "Insurance marketing technology company providing customer acquisition solutions for auto, home, life, health, Medicare, and commercial insurance. Acquired by Centerfield in 2021.", "website": "https://datalot.com/", "phone": "(855) 527-4365", "email": "", "linkedin": "https://www.linkedin.com/company/datalot", "people": [{"name": "Josh Reznick", "title": "Founder & CEO"}]}, {"id": 18, "name": "FLOCABULARY", "suite": "", "floor": "", "tags": ["tech", "education", "music", "media"], "description": "Educational hip-hop learning platform for K-12 students using rap music and videos to teach vocabulary, history, science, and literacy. Used by 20,000+ schools.", "website": "https://flocabulary.com/", "phone": "(718) 852-0105", "email": "info@flocabulary.com", "linkedin": "https://www.linkedin.com/company/flocabulary", "people": [{"name": "Alex Rappaport", "title": "Co-Founder"}, {"name": "Blake Harrison", "title": "Co-Founder"}]}, {"id": 19, "name": "LEONE DESIGN STUDIO", "suite": "253B", "floor": "2", "tags": ["architecture", "interior design", "residential"], "description": "Interior design and architecture firm specializing in modern and contemporary residential renovations in Brooklyn.", "website": "https://leonedesignstudio.com/", "phone": "(718) 243-9088", "email": "info@leonedesignstudio.com", "linkedin": "", "people": [{"name": "Roy Leone", "title": "Co-Founder, Architect"}, {"name": "Jennifer Leone", "title": "Co-Founder, Architect"}]}, {"id": 20, "name": "MIONETTO USA (FREIXENET MIONETTO USA)", "suite": "", "floor": "", "tags": ["beverage", "wine", "brand", "import"], "description": "One of the largest sparkling wine companies in the US, producing Prosecco and Cava wines. Heritage brands from Spain (1914) and Italy (1887).", "website": "https://usa.mionetto.com/", "phone": "(718) 596-3339", "email": "", "linkedin": "https://www.linkedin.com/company/freixenet-mionetto-usa", "people": [{"name": "Enore Ceola", "title": "CEO and President"}]}, {"id": 21, "name": "THE ROUNDS", "suite": "415", "floor": "4", "tags": ["startup", "sustainability", "delivery", "e-commerce"], "description": "Eco-friendly grocery delivery service with sustainable restocking, refillable staples, compost and recycling pickup. Zero-waste supply chain. Acquired by Misfits Market in 2025.", "website": "https://theroundsnyc.com/", "phone": "", "email": "", "linkedin": "https://www.linkedin.com/company/therounds", "people": [{"name": "Alexander Torrey", "title": "Co-Founder & CEO"}]}, {"id": 22, "name": "ROVI HEALTH", "suite": "", "floor": "", "tags": ["tech", "health", "AI", "startup"], "description": "AI healthcare concierge for employees, steering them to high-quality, affordable care. Y Combinator F25 cohort.", "website": "https://rovi.health/", "phone": "", "email": "contact@rovihealth.com", "linkedin": "https://www.linkedin.com/company/rovi-health", "people": []}, {"id": 23, "name": "CTS BUILDERS", "suite": "", "floor": "", "tags": ["construction", "development"], "description": "Design/build, construction management, land development, and owners' representation.", "website": "https://cts-builders.com/", "phone": "", "email": "", "linkedin": "https://www.linkedin.com/company/cts-builders", "people": []}, {"id": 24, "name": "EMPOWER PHYSICAL THERAPY", "suite": "306", "floor": "3", "tags": ["health", "wellness", "physical therapy"], "description": "Pelvic health and orthopedic physical therapy clinic. In-clinic, virtual, and home visit options.", "website": "https://www.empowerpt.nyc/", "phone": "(332) 334-7909", "email": "", "linkedin": "", "people": [{"name": "Julia Rosenthal, DPT", "title": "Founder"}]}, {"id": 25, "name": "McMAHON, MARTINE & GALLAGHER, LLP", "suite": "720", "floor": "7", "tags": ["legal"], "description": "Law firm specializing in insurance defense, litigation, personal injury, premises liability, medical malpractice, and toxic torts. Founded 1958, 18 lawyers.", "website": "https://www.mmglawyers.com/", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 26, "name": "KAISHIAN & MORTAZAVI LLC", "suite": "461/508", "floor": "4", "tags": ["legal", "civil rights"], "description": "Law firm specializing in civil rights and criminal defense.", "website": "https://kaishianlaw.com/", "phone": "(347) 662-2421", "email": "", "linkedin": "", "people": [{"name": "Maryanne K. Kaishian", "title": "Partner"}, {"name": "S. Masoud Mortazavi", "title": "Partner"}]}, {"id": 27, "name": "FULL ENGLISH POST", "suite": "624", "floor": "6", "tags": ["audio", "post-production", "sound design", "mixing", "podcast"], "description": "Boutique audio post-production studio specializing in commercials, branded content, film, TV, cinema, and podcast production. Founded 2016 by Kieran Kaye, a Britain-born engineer who came up in London's commercial advertising scene before planting in DUMBO. Operates three full studios (Studio 1, 2, 3) plus three recording suites (A, B, C). Also rents The Podcast Suites for podcast production and voice recording.", "website": "https://fullenglish.co/", "phone": "(917) 426-5429", "email": "hello@fullenglish.co", "linkedin": "https://www.linkedin.com/company/fullenglishpost", "people": [{"name": "Kieran Kaye", "title": "Founder & Head of Audio"}, {"name": "Jenise Morgan", "title": "Producer"}, {"name": "Jason Kaye", "title": "Head of Business Development"}, {"name": "Charles Atangana", "title": "Sound Designer / Mixer"}, {"name": "Ben Steiner", "title": "Sound Designer / Mixer"}]}, {"id": 28, "name": "MAISONETTE", "suite": "620", "floor": "6", "tags": ["e-commerce", "retail", "kids", "lifestyle", "brand"], "description": "Curated baby and kids' luxury marketplace. Stylish, premium alternative to mass-market kids' retail. Founded 2017.", "website": "https://maisonette.com/", "phone": "(212) 796-2300", "email": "", "linkedin": "", "people": []}, {"id": 29, "name": "5 PLUS 5 GALLERY", "suite": "", "floor": "", "tags": ["art", "gallery"], "description": "Art gallery in the building. Details limited.", "website": "", "phone": "(718) 488-8383", "email": "", "linkedin": "", "people": []}, {"id": 30, "name": "EQUINOX DUMBO", "suite": "", "floor": "", "tags": ["fitness", "luxury", "wellness"], "description": "Luxury fitness center. 22,000 sq ft with strength training, 3 studios, spa, juice bar, lounge, and infinity pool with Brooklyn Bridge views.", "website": "https://www.equinox.com/clubs/new-york/brooklyn/dumbo", "phone": "(347) 435-2341", "email": "", "linkedin": "", "people": []}, {"id": 31, "name": "GLEASON'S GYM", "suite": "", "floor": "", "tags": ["fitness", "boxing", "historic"], "description": "Largest and oldest active boxing gym in the United States. Has produced 129 World Champions and 2 Olympic Gold Medalists.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 32, "name": "PEAS & PICKLES", "suite": "1", "floor": "1", "tags": ["retail", "food", "market"], "description": "24-hour supermarket/market with fresh produce, hot/cold food bar, sandwiches, and bagels.", "website": "", "phone": "(718) 488-8336", "email": "", "linkedin": "", "people": []}, {"id": 33, "name": "APRIL HANNAH", "suite": "714", "floor": "7", "tags": ["art", "painting", "sculpture"], "description": "Abstract painter and sculptor. MFA from School of Visual Arts. Museum of Arts and Design Artist Studios Residency Award (2010).", "website": "https://www.aprilhannah.com/", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 34, "name": "SUSAN HOMER", "suite": "", "floor": "", "tags": ["art", "studio"], "description": "Artist with studio in the building. Featured in NY Magazine and Domino Magazine. Participates in DUMBO Open Studios.", "website": "https://www.susanhomer.com/", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 35, "name": "OFFICE JDY ARCHITECTURE PLLC", "suite": "335", "floor": "3", "tags": ["architecture", "interior design", "project strategy"], "description": "Architecture, interiors, and project strategy firm. Multidisciplinary practice handling residential, commercial, and institutional projects.", "website": "https://www.officejdy.com/", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 36, "name": "SA-DA ARCHITECTURE", "suite": "555", "floor": "5", "tags": ["architecture", "interior design", "residential", "commercial"], "description": "Multidisciplinary architectural practice providing residential and commercial design services. Listed on Brownstoner as a top Brooklyn interior design/architecture firm.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 37, "name": "ROMINES ARCHITECTURE PLLC", "suite": "709", "floor": "7", "tags": ["architecture", "design"], "description": "Architecture firm.", "website": "http://www.rominesarchitecture.com/", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 38, "name": "ROBINSON + GRISARU ARCHITECTURE PC", "suite": "711", "floor": "7", "tags": ["architecture", "design"], "description": "Architecture firm. Member of AIA Brooklyn chapter.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 39, "name": "FORMAT ARCHITECTURE OFFICE", "suite": "312D", "floor": "3", "tags": ["architecture", "design", "urban"], "description": "Architecture and design practice.", "website": "https://format.nyc/about", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 40, "name": "DENCITYWORKS", "suite": "713", "floor": "7", "tags": ["architecture", "mixed-use", "multifamily", "cultural"], "description": "Architecture firm focusing on mixed-use, multifamily, cultural, and office projects. Established 2021.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 41, "name": "CORNERSTONE AGENCY", "suite": "908 (shared with The Fader)", "floor": "9", "tags": ["talent", "marketing", "lifestyle", "music", "PR"], "description": "Creative lifestyle marketing and PR agency founded in 1996. Co-founded by Rob Stone (who also co-founded The Fader). Manages talent and produces cultural marketing campaigns.", "website": "https://www.cornerstoneagency.com/", "phone": "", "email": "", "linkedin": "", "people": [{"name": "Rob Stone", "title": "Founder (also co-founded The Fader)"}]}, {"id": 42, "name": "THE GOTHAM FILM & MEDIA INSTITUTE", "suite": "324", "floor": "3", "tags": ["nonprofit", "film", "media", "independent film"], "description": "Formerly known as IFP (Independent Filmmaker Project), The Gotham is the leading nonprofit dedicated to independent film and media. Presents the annual Gotham Awards, runs filmmaker labs, and supports independent storytellers.", "website": "https://thegotham.org/", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 43, "name": "ROMP FILM LLC", "suite": "712", "floor": "7", "tags": ["film", "production"], "description": "Film production company. Registered LLC since 2008.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 44, "name": "GREG MILLER PHOTOGRAPHY", "suite": "", "floor": "", "tags": ["photography", "fine art", "commercial"], "description": "Fine art and commercial photographer with 30+ years experience. Studio in building.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 45, "name": "ANNE PEABODY", "suite": "455", "floor": "4", "tags": ["art", "sculpture", "functional art", "performance"], "description": "Artist creating functional art, drawings, sculptures, and performance pieces. Studio in building.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 46, "name": "THE SCULPTORS GUILD", "suite": "256", "floor": "2", "tags": ["art", "sculpture", "nonprofit", "artist collective"], "description": "Artist-run organization founded in 1937 dedicated to promoting contemporary sculpture. One of the oldest artist organizations in the US.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 47, "name": "BROMPTON BICYCLE (USA)", "suite": "253A", "floor": "2", "tags": ["bicycle", "manufacturing", "retail", "UK brand"], "description": "US office/distributor for Brompton, the UK's largest bicycle manufacturer. Famous for their folding bikes. This is their American operations base.", "website": "https://us.brompton.com/", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 48, "name": "BLUE COLLECTIVE", "suite": "", "floor": "", "tags": ["venture capital", "investment", "startup"], "description": "Venture capital / investment firm.", "website": "https://bluecollective.com/", "phone": "+1 929-295-6711", "email": "blue@bluecollective.com", "linkedin": "", "people": []}, {"id": 49, "name": "DASH", "suite": "", "floor": "", "tags": ["software", "tech", "app"], "description": "Software development company.", "website": "https://dashwith.me", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 50, "name": "RECYCLE-A-BICYCLE", "suite": "", "floor": "", "tags": ["nonprofit", "bicycle", "education", "youth"], "description": "Bicycle service and youth education nonprofit. Teaches bike repair and promotes cycling.", "website": "", "phone": "(718) 858-2972", "email": "", "linkedin": "", "people": []}, {"id": 51, "name": "RXR SPORTS", "suite": "", "floor": "", "tags": ["talent management", "sports", "entertainment"], "description": "Elite athlete and artist management agency.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 52, "name": "INTENTLY", "suite": "", "floor": "", "tags": ["marketing", "digital"], "description": "Marketing company. Limited public information available.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 53, "name": "STEVEN COHN & RICHARD GOLDBERG, ATTORNEYS", "suite": "312-D", "floor": "3", "tags": ["legal"], "description": "Law office at 55 Washington.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 54, "name": "LAW OFFICE OF JONATHAN MASON-KINSEY", "suite": "", "floor": "", "tags": ["legal"], "description": "Law office at 55 Washington.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 55, "name": "KENNETH MONTGOMERY, ESQ.", "suite": "", "floor": "", "tags": ["legal"], "description": "Law office at 55 Washington.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 56, "name": "INCH, INC.", "suite": "654", "floor": "6", "tags": ["product design", "industrial design", "engineering", "manufacturing", "medical devices"], "description": "Product design and engineering consultancy. Takes products from concept through industrial design, mechanical engineering, electronics/firmware, and manufacturing. Core specialties include medical device development (FDA-compliant), injection molding design, UI/app design, and branding. Founded 1990 \u2014 over 35 years in operation.", "website": "https://www.inchnyc.com/", "phone": "(718) 260-0069", "email": "info@inchnyc.com", "linkedin": "", "people": [{"name": "Timothy Eberhardt", "title": "Principal (likely founder; LinkedIn-sourced, not confirmed by website)"}, {"name": "Benjamen Centeno", "title": "Team member"}, {"name": "Kola Lolo", "title": "Team member"}]}, {"id": 57, "name": "VR STUDIO (SUITE 618 \u2014 IDENTITY UNCONFIRMED)", "suite": "618", "floor": "6", "tags": ["VR", "XR", "immersive", "virtual production"], "description": "Rick identified signage indicating a VR or XR production studio. No public tenant record, lease database, or press mention confirms the specific company name or identity for Suite 618. The company either has minimal web presence, is operating pre-launch, or moved in too recently for databases to catch.", "website": "", "phone": "", "email": "", "linkedin": "", "people": []}, {"id": 58, "name": "ASK MEDIA (SUITE 612 \u2014 IDENTITY LOW CONFIDENCE)", "suite": "612", "floor": "6", "tags": ["media", "digital", "content", "performance marketing"], "description": "Rick identified signage reading \"Ask Media\" at Suite 612. Research surfaced two possible matches. First: **Ask Media Group** (askmediagroup.com), the IAC-owned performance marketing company operating Ask.com and a portfolio of search/content properties across health, finance, and consumer verticals. Primary HQ is Oakland, CA; corporate address is IAC's Manhattan office. No public record confirms a Brooklyn satellite. Second: an independent, smaller \"Ask Media\" with no detectable web presence. Identity is unconfirmed.", "website": "https://www.askmediagroup.com/", "phone": "", "email": "", "linkedin": "", "people": []}];
+
+const mainCategories = [
+    {label:'Agency',tags:['agency']},
+    {label:'Production',tags:['production']},
+    {label:'Film',tags:['film','documentary']},
+    {label:'Architecture',tags:['architecture','interior design']},
+    {label:'Design',tags:['design']},
+    {label:'Art',tags:['art','painting','sculpture']},
+    {label:'Tech',tags:['tech']},
+    {label:'Media',tags:['media','publishing']},
+    {label:'Music',tags:['music']},
+    {label:'PR',tags:['PR','communications']},
+    {label:'Legal',tags:['legal']},
+    {label:'Health',tags:['health','wellness','physical therapy']},
+    {label:'Food & Retail',tags:['food','retail','market','beverage']},
+    {label:'Education',tags:['education','edtech']},
+    {label:'Startup',tags:['startup']},
+    {label:'Nonprofit',tags:['nonprofit']}
+];
+
+let activeCategory = null;
+let activeFloor = null;
+let searchTerm = '';
+
+function buildFilters(){
+    const cf = document.getElementById('categoryFilters');
+    const allBtn = document.createElement('button');
+    allBtn.className = 'filter-pill active';
+    allBtn.textContent = 'All';
+    allBtn.onclick = () => { activeCategory = null; updateFilters(); render(); };
+    cf.appendChild(allBtn);
+    
+    mainCategories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-pill';
+        btn.textContent = cat.label;
+        btn.onclick = () => { activeCategory = cat; updateFilters(); render(); };
+        cf.appendChild(btn);
+    });
+    
+    const ff = document.getElementById('floorFilters');
+    const floorAll = document.createElement('button');
+    floorAll.className = 'floor-btn active';
+    floorAll.textContent = 'All';
+    floorAll.onclick = () => { activeFloor = null; updateFloorFilters(); render(); };
+    ff.appendChild(floorAll);
+    
+    for(let f = 2; f <= 9; f++){
+        const btn = document.createElement('button');
+        btn.className = 'floor-btn';
+        btn.textContent = f;
+        btn.onclick = () => { activeFloor = String(f); updateFloorFilters(); render(); };
+        ff.appendChild(btn);
+    }
+}
+
+function updateFilters(){
+    document.querySelectorAll('#categoryFilters .filter-pill').forEach((btn,i) => {
+        if(i===0) btn.classList.toggle('active', activeCategory===null);
+        else btn.classList.toggle('active', activeCategory===mainCategories[i-1]);
+    });
+}
+
+function updateFloorFilters(){
+    document.querySelectorAll('#floorFilters .floor-btn').forEach((btn,i) => {
+        if(i===0) btn.classList.toggle('active', activeFloor===null);
+        else btn.classList.toggle('active', activeFloor===String(i+1));
+    });
+}
+
+function matchesSearch(company, term){
+    if(!term) return true;
+    const t = term.toLowerCase();
+    const searchable = [
+        company.name, company.description, company.suite,
+        ...company.tags,
+        ...company.people.map(p => p.name + ' ' + p.title)
+    ].join(' ').toLowerCase();
+    return searchable.includes(t);
+}
+
+function matchesCategory(company){
+    if(!activeCategory) return true;
+    return activeCategory.tags.some(t => company.tags.some(ct => ct.toLowerCase().includes(t.toLowerCase())));
+}
+
+function matchesFloor(company){
+    if(!activeFloor) return true;
+    return company.floor === activeFloor;
+}
+
+function renderCard(c){
+    const tags = c.tags.map(t => `<span class="tag">${t}</span>`).join('');
+    const people = c.people.length ? `<div class="card-people"><h4>Key People</h4>${c.people.slice(0,4).map(p => `<div class="person"><strong>${p.name}</strong> &mdash; ${p.title}</div>`).join('')}</div>` : '';
+    
+    let contact = [];
+    if(c.phone) contact.push(`<span>&#128222; ${c.phone}</span>`);
+    if(c.email) contact.push(`<span>&#9993; ${c.email}</span>`);
+    const contactHtml = contact.length ? `<div class="card-contact">${contact.join('')}</div>` : '';
+    
+    let links = [];
+    if(c.website) links.push(`<a href="${c.website}" target="_blank" rel="noopener" class="card-link">&#127760; Website</a>`);
+    if(c.linkedin) links.push(`<a href="${c.linkedin}" target="_blank" rel="noopener" class="card-link">in LinkedIn</a>`);
+    const linksHtml = links.length ? `<div class="card-links">${links.join('')}</div>` : '';
+    
+    return `<div class="card" style="animation-delay:${Math.random()*0.3}s">
+        <div class="card-header">
+            <div class="card-name">${c.name}</div>
+            ${c.suite ? `<div class="card-suite">${c.suite.split('(')[0].trim()}</div>` : ''}
+        </div>
+        <div class="card-desc">${c.description}</div>
+        <div class="card-tags">${tags}</div>
+        ${contactHtml}
+        ${people}
+        ${linksHtml}
+    </div>`;
+}
+
+function render(){
+    const filtered = companies.filter(c => matchesSearch(c, searchTerm) && matchesCategory(c) && matchesFloor(c));
+    const grid = document.getElementById('grid');
+    const noResults = document.getElementById('noResults');
+    const count = document.getElementById('resultCount');
+    
+    if(filtered.length === 0){
+        grid.innerHTML = '';
+        noResults.style.display = 'block';
+        count.textContent = '0 results';
+    } else {
+        noResults.style.display = 'none';
+        grid.innerHTML = filtered.map(renderCard).join('');
+        count.textContent = filtered.length === companies.length ? `Showing all ${companies.length} companies` : `${filtered.length} of ${companies.length} companies`;
+    }
+}
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    searchTerm = e.target.value;
+    render();
+});
+
+buildFilters();
+render();
+</script>
+</body>
+</html>
