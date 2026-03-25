@@ -24,8 +24,34 @@ a:hover{opacity:.75}
 ::selection{background:rgba(196,162,101,.25);color:var(--cream)}
 img{display:block;max-width:100%}
 
+/* ═══ BRONZE MAP ═══ */
+.bronze-map{position:fixed;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;perspective:1200px}
+.bronze-map svg{width:min(100vw,1400px);height:auto;transform:rotateX(12deg) scale(1.1);transform-origin:center 60%;transition:opacity 1.2s cubic-bezier(.25,.46,.45,.94)}
+.bronze-map .map-streets{opacity:0;transition:opacity 1.4s ease .1s}
+.bronze-map .map-bridges{opacity:0;transition:opacity 1.4s ease .3s}
+.bronze-map .map-waterfront{opacity:0;transition:opacity 1.4s ease .5s}
+.bronze-map .map-buildings{opacity:0;transition:opacity 1.4s ease .7s}
+.bronze-map .map-contours{opacity:0;transition:opacity 1.4s ease .2s}
+.bronze-map .map-marker{opacity:0;transition:opacity 1.4s ease .9s}
+.bronze-map.reveal-1 .map-contours{opacity:1}
+.bronze-map.reveal-1 .map-streets{opacity:1}
+.bronze-map.reveal-2 .map-bridges{opacity:1}
+.bronze-map.reveal-2 .map-contours{opacity:1}
+.bronze-map.reveal-2 .map-streets{opacity:1}
+.bronze-map.reveal-3 .map-waterfront{opacity:1}
+.bronze-map.reveal-3 .map-bridges{opacity:1}
+.bronze-map.reveal-3 .map-contours{opacity:1}
+.bronze-map.reveal-3 .map-streets{opacity:1}
+.bronze-map.reveal-4 .map-buildings{opacity:1}
+.bronze-map.reveal-4 .map-marker{opacity:1}
+.bronze-map.reveal-4 .map-waterfront{opacity:1}
+.bronze-map.reveal-4 .map-bridges{opacity:1}
+.bronze-map.reveal-4 .map-contours{opacity:1}
+.bronze-map.reveal-4 .map-streets{opacity:1}
+.map-glow{filter:drop-shadow(0 0 6px rgba(196,162,101,.3))}
+
 /* ═══ HERO ═══ */
-.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero{position:relative;z-index:1;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1590714693225-bab11cdb76a6?w=1920&q=80') center/cover no-repeat}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,14,10,.4) 0%,rgba(15,14,10,.65) 50%,rgba(15,14,10,.92) 100%)}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 32px;max-width:800px}
@@ -42,7 +68,7 @@ img{display:block;max-width:100%}
 @keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
 
 /* ═══ ABOUT SPLIT ═══ */
-.about{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.about{display:grid;grid-template-columns:1fr 1fr;min-height:600px;position:relative;z-index:1}
 @media(max-width:800px){.about{grid-template-columns:1fr;min-height:auto}}
 .about-text{background:var(--warm-dark);padding:clamp(48px,6vw,80px);display:flex;flex-direction:column;justify-content:center}
 .about-eyebrow{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
@@ -51,7 +77,7 @@ img{display:block;max-width:100%}
 .about-img{background:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=960&q=80') center/cover no-repeat;min-height:400px}
 
 /* ═══ EVENTS ═══ */
-.events{position:relative;overflow:hidden}
+.events{position:relative;z-index:1;overflow:hidden}
 .events-photo{height:360px;background:url('https://images.unsplash.com/photo-1571168136613-46401b03904e?w=1920&q=80') center 60%/cover no-repeat;position:relative}
 .events-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,14,10,.3),rgba(15,14,10,.85))}
 .events-content{background:var(--bg);padding:clamp(48px,6vw,80px) clamp(32px,5vw,80px)}
@@ -156,13 +182,13 @@ img{display:block;max-width:100%}
 .btn-secondary:hover{border-color:var(--gold-line);color:var(--cream-dim)}
 
 /* ═══ FOOTER ═══ */
-.site-footer{border-top:1px solid var(--border);padding:52px 32px;text-align:center;background:var(--bg)}
+.site-footer{border-top:1px solid var(--border);padding:52px 32px;text-align:center;background:var(--bg);position:relative;z-index:1}
 .footer-brand{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--cream-dim);margin-bottom:10px;letter-spacing:.3px}
 .footer-brand em{font-style:italic;color:var(--gold)}
 .footer-addr{font-size:10px;font-weight:300;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;line-height:2}
 
 /* ═══ JOIN SECTION ═══ */
-.join-section{background:var(--warm-dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.join-section{background:var(--warm-dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1}
 .join-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:500px}
 @media(max-width:800px){.join-inner{grid-template-columns:1fr}}
 .join-text{padding:clamp(48px,6vw,80px);display:flex;flex-direction:column;justify-content:center}
@@ -182,6 +208,84 @@ img{display:block;max-width:100%}
 </style>
 </head>
 <body>
+
+<!-- ═══ BRONZE ELEVATION MAP ═══ -->
+<div class="bronze-map" id="bronzeMap">
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Contour/elevation lines -->
+  <g class="map-contours" stroke="#C4A265" stroke-width=".4" opacity=".06">
+    <ellipse cx="500" cy="380" rx="420" ry="240" /><ellipse cx="500" cy="380" rx="360" ry="200" />
+    <ellipse cx="500" cy="380" rx="300" ry="160" /><ellipse cx="500" cy="380" rx="240" ry="120" />
+    <ellipse cx="500" cy="380" rx="180" ry="80" /><ellipse cx="500" cy="380" rx="120" ry="50" />
+  </g>
+  <!-- Street grid (DUMBO layout) -->
+  <g class="map-streets" stroke="#C4A265" stroke-width=".6" opacity=".05">
+    <!-- Washington St (horizontal) -->
+    <line x1="280" y1="320" x2="720" y2="320"/>
+    <!-- Front St -->
+    <line x1="280" y1="360" x2="720" y2="360"/>
+    <!-- Water St -->
+    <line x1="280" y1="400" x2="720" y2="400"/>
+    <!-- Plymouth St -->
+    <line x1="280" y1="440" x2="720" y2="440"/>
+    <!-- Main St (vertical) -->
+    <line x1="400" y1="260" x2="400" y2="480"/>
+    <!-- Jay St -->
+    <line x1="340" y1="260" x2="340" y2="480"/>
+    <!-- Bridge St -->
+    <line x1="460" y1="260" x2="460" y2="480"/>
+    <!-- Gold St -->
+    <line x1="520" y1="260" x2="520" y2="480"/>
+    <!-- Pearl St -->
+    <line x1="580" y1="280" x2="580" y2="480"/>
+    <!-- Anchorage Pl -->
+    <line x1="640" y1="300" x2="640" y2="460"/>
+  </g>
+  <!-- Waterfront edge -->
+  <g class="map-waterfront" stroke="#C4A265" stroke-width="1.2" opacity=".06">
+    <path d="M220,260 C300,240 420,230 560,240 C640,245 720,260 800,290" stroke-linecap="round"/>
+    <path d="M220,258 C300,238 420,228 560,238 C640,243 720,258 800,288" stroke-width=".4" opacity=".5"/>
+  </g>
+  <!-- Manhattan Bridge -->
+  <g class="map-bridges" stroke="#C4A265" opacity=".07">
+    <!-- Bridge deck -->
+    <line x1="400" y1="230" x2="400" y2="100" stroke-width="2.5"/>
+    <!-- Bridge approach from DUMBO -->
+    <path d="M380,260 L380,230 L420,230 L420,260" stroke-width=".8" fill="none"/>
+    <!-- Tower 1 -->
+    <rect x="390" y="200" width="20" height="35" stroke-width="1" fill="none"/>
+    <!-- Tower 2 -->
+    <rect x="390" y="120" width="20" height="30" stroke-width="1" fill="none"/>
+    <!-- Cables -->
+    <path d="M395,200 Q400,165 405,200" stroke-width=".5" fill="none"/>
+    <path d="M395,200 Q400,150 405,200" stroke-width=".3" fill="none"/>
+    <path d="M395,120 Q400,85 405,120" stroke-width=".5" fill="none"/>
+  </g>
+  <!-- Brooklyn Bridge (further south, lighter) -->
+  <g class="map-bridges" stroke="#C4A265" opacity=".04">
+    <line x1="650" y1="350" x2="750" y2="200" stroke-width="2"/>
+    <rect x="670" y="310" width="14" height="25" stroke-width=".8" fill="none"/>
+    <rect x="720" y="230" width="14" height="25" stroke-width=".8" fill="none"/>
+    <path d="M674,310 Q684,275 694,310" stroke-width=".4" fill="none"/>
+  </g>
+  <!-- Building footprints -->
+  <g class="map-buildings" stroke="#C4A265" stroke-width=".5" opacity=".04">
+    <rect x="345" y="325" width="50" height="30" rx="1"/><rect x="405" y="325" width="50" height="30" rx="1"/>
+    <rect x="465" y="325" width="50" height="30" rx="1"/><rect x="345" y="365" width="50" height="30" rx="1"/>
+    <rect x="405" y="365" width="50" height="30" rx="1"/><rect x="465" y="365" width="50" height="30" rx="1"/>
+    <rect x="525" y="325" width="50" height="30" rx="1"/><rect x="525" y="365" width="50" height="30" rx="1"/>
+    <rect x="345" y="405" width="50" height="30" rx="1"/><rect x="405" y="405" width="50" height="30" rx="1"/>
+    <rect x="465" y="405" width="50" height="30" rx="1"/><rect x="525" y="405" width="50" height="30" rx="1"/>
+    <rect x="585" y="330" width="45" height="25" rx="1"/><rect x="585" y="365" width="45" height="25" rx="1"/>
+  </g>
+  <!-- 55 Washington marker -->
+  <g class="map-marker map-glow">
+    <circle cx="435" cy="340" r="6" stroke="#C4A265" stroke-width="1" fill="none" opacity=".2"/>
+    <circle cx="435" cy="340" r="3" fill="#C4A265" opacity=".15"/>
+    <circle cx="435" cy="340" r="10" stroke="#C4A265" stroke-width=".3" fill="none" opacity=".1"/>
+  </g>
+</svg>
+</div>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
@@ -856,6 +960,35 @@ document.getElementById('grid').addEventListener('click',function(e){
 document.getElementById('searchInput').addEventListener('input',function(e){
   searchTerm=e.target.value.trim();render();
 });
+
+/* ── BRONZE MAP SCROLL REVEAL ───────────────────────────── */
+(function(){
+  const map=document.getElementById('bronzeMap');
+  if(!map)return;
+  const sections=document.querySelectorAll('section,.about,.events,.join-section,#directory');
+  let lastLevel=0;
+  function updateMap(){
+    const scrollY=window.scrollY;
+    const vh=window.innerHeight;
+    const docH=document.documentElement.scrollHeight;
+    const progress=scrollY/(docH-vh);
+    let level=0;
+    if(progress>.05)level=1;
+    if(progress>.2)level=2;
+    if(progress>.4)level=3;
+    if(progress>.6)level=4;
+    if(level!==lastLevel){
+      map.className='bronze-map'+(level>0?' reveal-'+level:'');
+      lastLevel=level;
+    }
+    // Subtle parallax shift
+    const tx=(scrollY*0.02)%20;
+    const ty=scrollY*0.015;
+    map.querySelector('svg').style.transform=`rotateX(12deg) scale(1.1) translateY(${-ty*0.3}px)`;
+  }
+  window.addEventListener('scroll',updateMap,{passive:true});
+  updateMap();
+})();
 
 /* ── INIT ───────────────────────────────────────────────── */
 buildNav();buildFloorFilters();render();
