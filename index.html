@@ -11,22 +11,23 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#FAF7F2;
-  --surface:#F5F0E8;
-  --card:#FFFFFF;
-  --green:#2D4A3E;
-  --ink:#1A1A1A;
-  --body:#3D3D3D;
-  --muted:#8A8277;
-  --border:#E8E2D8;
+  --bg:#0B0A0D;
+  --surface:#110F14;
+  --card:#141218;
+  --green:#C4A265;
+  --ink:#EDE8DF;
+  --body:rgba(237,232,223,0.65);
+  --muted:#5A5560;
+  --border:#1E1B24;
+  --highlight:rgba(196,162,101,0.12);
   --serif:'Cormorant Garamond','Playfair Display',Georgia,serif;
   --sans:'Inter',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 a{color:var(--green);text-decoration:none;transition:opacity 0.2s}
 a:hover{opacity:0.7}
-::selection{background:rgba(45,74,62,0.15);color:var(--ink)}
+::selection{background:rgba(196,162,101,0.25);color:var(--ink)}
 
 /* ── SPLASH ──────────────────────────────────────────────────── */
 #splash{
@@ -36,7 +37,7 @@ a:hover{opacity:0.7}
 }
 .splash-bridge{
   position:absolute;bottom:0;left:0;right:0;height:180px;
-  pointer-events:none;opacity:0.05;color:var(--ink);
+  pointer-events:none;opacity:0.06;color:var(--green);
 }
 .splash-bridge svg{width:100%;height:100%}
 .splash-content{text-align:center;position:relative;z-index:1;padding:0 32px}
@@ -58,16 +59,16 @@ a:hover{opacity:0.7}
 }
 .splash-cta{
   display:inline-block;padding:15px 48px;
-  border:1px solid rgba(26,26,26,0.22);border-radius:50px;
+  border:1px solid rgba(196,162,101,0.25);border-radius:50px;
   font-family:var(--sans);font-size:10px;font-weight:500;
-  letter-spacing:3px;text-transform:uppercase;color:var(--ink);
+  letter-spacing:3px;text-transform:uppercase;color:var(--green);
   background:transparent;cursor:pointer;transition:all 0.3s ease;
 }
-.splash-cta:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.splash-cta:hover{background:rgba(196,162,101,0.1);border-color:var(--green)}
 .splash-address{
   position:absolute;bottom:28px;
   font-family:var(--sans);font-size:9px;
-  letter-spacing:2.5px;text-transform:uppercase;color:rgba(26,26,26,0.28);
+  letter-spacing:2.5px;text-transform:uppercase;color:rgba(196,162,101,0.2);
 }
 
 /* ── APP ─────────────────────────────────────────────────────── */
@@ -115,7 +116,25 @@ a:hover{opacity:0.7}
   margin-bottom:-1px;
 }
 .cat-link:hover{color:var(--ink)}
-.cat-link.active{color:var(--ink);border-bottom-color:var(--ink)}
+.cat-link.active{color:var(--green);border-bottom-color:var(--green)}
+
+/* ── DASHBOARD ROW ──────────────────────────────────────────── */
+.dashboard-row{
+  max-width:1200px;margin:0 auto;padding:10px 32px 12px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--border);
+}
+.floor-row{display:flex;align-items:center;gap:6px}
+.floor-label{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-right:6px}
+.floor-btn{
+  width:28px;height:28px;border-radius:50%;border:1px solid var(--border);
+  background:transparent;color:var(--muted);font-size:10px;font-family:var(--sans);
+  font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+}
+.floor-btn:hover{border-color:rgba(196,162,101,0.35);color:var(--ink)}
+.floor-btn.active{background:var(--green);border-color:var(--green);color:#0B0A0D;font-weight:600}
+.dash-stats{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 
 /* ── GRID ────────────────────────────────────────────────────── */
 .grid-wrap{max-width:1200px;margin:0 auto;padding:0 40px 100px}
@@ -139,13 +158,15 @@ a:hover{opacity:0.7}
 
 /* ── CARD ────────────────────────────────────────────────────── */
 .card{
-  background:var(--card);padding:40px;cursor:pointer;
+  background:var(--card);padding:36px 40px;cursor:pointer;
   border:1px solid var(--border);margin:-1px 0 0 -1px;
   display:flex;flex-direction:column;position:relative;
-  transition:box-shadow 0.3s,z-index 0s;
+  transition:all 0.3s ease;
   animation:cardIn 0.4s ease both;
 }
-.card:hover{box-shadow:0 6px 28px rgba(0,0,0,0.08);z-index:1}
+.card:hover{background:#18161E;border-color:rgba(196,162,101,0.15);z-index:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.card-tag{font-size:10px;font-style:italic;font-weight:300;color:var(--green);padding:3px 10px;background:var(--highlight);border-radius:3px;letter-spacing:0.3px}
 .card-name{
   font-family:var(--serif);font-size:22px;font-weight:500;
   color:var(--ink);line-height:1.2;margin-bottom:6px;letter-spacing:0.1px;
@@ -181,14 +202,14 @@ a:hover{opacity:0.7}
 
 /* ── MODAL ───────────────────────────────────────────────────── */
 .modal-overlay{
-  position:fixed;inset:0;background:rgba(26,26,26,0.38);z-index:1000;
+  position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:1000;
   display:flex;align-items:flex-end;justify-content:center;
   opacity:0;pointer-events:none;transition:opacity 0.3s ease;
-  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal-panel{
-  width:100%;max-width:720px;max-height:92vh;background:#FFFFFF;
+  width:100%;max-width:720px;max-height:92vh;background:#111015;
   border-radius:12px 12px 0 0;
   display:flex;flex-direction:column;overflow:hidden;
   transform:translateY(40px);opacity:0;
@@ -218,12 +239,12 @@ a:hover{opacity:0.7}
   color:var(--muted);cursor:pointer;display:flex;align-items:center;
   justify-content:center;font-size:16px;transition:all 0.2s;
 }
-.modal-close:hover{border-color:var(--ink);color:var(--ink)}
+.modal-close:hover{border-color:var(--green);color:var(--green)}
 .modal-logo-row{display:flex;align-items:flex-start;gap:22px;margin-bottom:0}
 .modal-logo-wrap{
   width:80px;height:80px;border-radius:8px;overflow:hidden;
-  background:var(--surface);display:flex;align-items:center;
-  justify-content:center;flex-shrink:0;border:1px solid var(--border);
+  background:rgba(196,162,101,0.06);display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;border:1px solid rgba(196,162,101,0.12);
 }
 .modal-logo-wrap img.co-logo{width:80px;height:80px;object-fit:contain;padding:8px;display:block}
 .modal-name-block{flex:1;padding-top:4px;min-width:0}
@@ -278,13 +299,13 @@ a:hover{opacity:0.7}
   display:flex;gap:10px;flex-shrink:0;
 }
 .btn-primary{
-  flex:1;padding:14px 24px;background:transparent;color:var(--ink);
-  border:1px solid rgba(26,26,26,0.22);border-radius:50px;
+  flex:1;padding:14px 24px;background:transparent;color:var(--green);
+  border:1px solid rgba(196,162,101,0.3);border-radius:50px;
   font-family:var(--sans);font-size:10px;font-weight:500;
   letter-spacing:2.5px;text-transform:uppercase;text-align:center;
   display:block;transition:all 0.3s;
 }
-.btn-primary:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn-primary:hover{background:rgba(196,162,101,0.1);border-color:var(--green)}
 .btn-secondary{
   padding:12px 20px;border:1px solid var(--border);background:transparent;
   color:var(--muted);border-radius:50px;font-family:var(--sans);
@@ -361,9 +382,12 @@ a:hover{opacity:0.7}
   </header>
   <nav class="cat-nav-wrap">
     <div class="cat-nav" id="catNav"></div>
+    <div class="dashboard-row">
+      <div class="floor-row" id="floorRow"><span class="floor-label">Floor</span></div>
+      <div class="dash-stats"><span id="countBar">59 Members</span></div>
+    </div>
   </nav>
   <div class="grid-wrap">
-    <div class="count-line" id="countBar"></div>
     <div class="grid" id="grid"></div>
     <div class="no-results" id="noResults" style="display:none"><span>No members found</span>Try adjusting your search or filter.</div>
   </div>
@@ -493,7 +517,7 @@ function avatarDiv(company,size){
   const s=size||44;
   const r=s>=60?8:6;
   const initial=(company.name.match(/[A-Za-z]/)||['?'])[0].toUpperCase();
-  return `<div style="width:${s}px;height:${s}px;border-radius:${r}px;background:${AVATAR_BG};display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:${Math.round(s*0.38)}px;color:#FAF7F2;flex-shrink:0">${initial}</div>`;
+  return `<div style="width:${s}px;height:${s}px;border-radius:${r}px;background:${AVATAR_BG};display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:${Math.round(s*0.38)}px;color:#0B0A0D;flex-shrink:0">${initial}</div>`;
 }
 
 /* ── LOGO HTML ───────────────────────────────────────────────── */
@@ -518,7 +542,7 @@ document.addEventListener('error',function(e){
     const s=parseInt(img.dataset.size);
     const r=img.dataset.radius;
     const div=document.createElement('div');
-    div.style.cssText=`width:${s}px;height:${s}px;border-radius:${r}px;background:${AVATAR_BG};display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:${Math.round(s*0.38)}px;color:#FAF7F2;flex-shrink:0`;
+    div.style.cssText=`width:${s}px;height:${s}px;border-radius:${r}px;background:${AVATAR_BG};display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:${Math.round(s*0.38)}px;color:#0B0A0D;flex-shrink:0`;
     div.textContent=img.dataset.initial;
     if(img.parentNode)img.parentNode.replaceChild(div,img);
   }
@@ -534,11 +558,17 @@ function floorLabel(c){
 
 /* ── CARD ────────────────────────────────────────────────────── */
 function renderCard(c,delay){
+  const tagHtml=c.tags.slice(0,4).map(t=>`<span class="card-tag">${t}</span>`).join('');
+  const floorInfo=c.suite?`<span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-left:auto">Floor ${c.floor} / ${c.suite}</span>`:'';
   return `<div class="card" data-id="${c.id}" style="animation-delay:${delay}s">
-    <div class="card-name">${c.name}</div>
+    <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
+      <div class="card-name">${c.name}</div>
+      ${floorInfo}
+    </div>
     <div class="card-discipline">${disciplineLabel(c)}</div>
+    <div class="card-tags">${tagHtml}</div>
     <div class="card-desc">${c.description}</div>
-    <div class="card-view">View &rsaquo;</div>
+    <div class="card-view">View Profile &rsaquo;</div>
   </div>`;
 }
 
@@ -617,7 +647,27 @@ const mainCategories=[
 ];
 
 let activeCategory=null;
+let activeFloor=null;
 let searchTerm='';
+
+function buildFloorFilters(){
+  const row=document.getElementById('floorRow');
+  const allBtn=document.createElement('button');
+  allBtn.className='floor-btn active';allBtn.textContent='All';
+  allBtn.onclick=()=>{activeFloor=null;updateFloors();render()};
+  row.appendChild(allBtn);
+  for(let f=1;f<=9;f++){
+    const btn=document.createElement('button');
+    btn.className='floor-btn';btn.textContent=f;
+    btn.onclick=()=>{activeFloor=String(f);updateFloors();render()};
+    row.appendChild(btn);
+  }
+}
+function updateFloors(){
+  document.querySelectorAll('.floor-btn').forEach((b,i)=>{
+    b.classList.toggle('active',i===0?activeFloor===null:activeFloor===String(i));
+  });
+}
 
 function buildNav(){
   const nav=document.getElementById('catNav');
@@ -648,10 +698,14 @@ function matchesCategory(c){
   if(!activeCategory)return true;
   return activeCategory.some(t=>c.tags.some(ct=>ct.toLowerCase().includes(t.toLowerCase())));
 }
+function matchesFloor(c){
+  if(!activeFloor)return true;
+  return c.floor===activeFloor;
+}
 
 /* ── RENDER ──────────────────────────────────────────────────── */
 function render(){
-  const filtered=companies.filter(c=>matchesSearch(c,searchTerm)&&matchesCategory(c));
+  const filtered=companies.filter(c=>matchesSearch(c,searchTerm)&&matchesCategory(c)&&matchesFloor(c));
   const grid=document.getElementById('grid');
   const noResults=document.getElementById('noResults');
   const countBar=document.getElementById('countBar');
@@ -681,6 +735,7 @@ document.getElementById('searchInput').addEventListener('input',function(e){
 
 /* ── INIT ────────────────────────────────────────────────────── */
 buildNav();
+buildFloorFilters();
 render();
 </script>
 </body>
