@@ -45,8 +45,8 @@ img{display:block;max-width:100%}
 
 /* ═══ HERO ═══ */
 .hero{position:relative;z-index:1;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1590714693225-bab11cdb76a6?w=1920&q=80') center/cover no-repeat;opacity:0.18;filter:grayscale(25%)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,14,10,.4) 0%,rgba(15,14,10,.65) 50%,rgba(15,14,10,.92) 100%)}
+.hero-img{display:none}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(15,14,10,.45) 0%,rgba(15,14,10,.7) 60%,rgba(15,14,10,.85) 100%)}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 32px;max-width:800px}
 .hero-eyebrow{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px}
 .hero h1{font-family:var(--serif);font-weight:300;line-height:1;margin-bottom:12px}
@@ -61,19 +61,18 @@ img{display:block;max-width:100%}
 @keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
 
 /* ═══ ABOUT SPLIT ═══ */
-.about{display:grid;grid-template-columns:1fr 1fr;min-height:600px;position:relative;z-index:1}
+.about{display:grid;grid-template-columns:1fr 1fr;min-height:600px;position:relative;z-index:1;background:transparent}
 @media(max-width:800px){.about{grid-template-columns:1fr;min-height:auto}}
-.about-text{background:var(--warm-dark);padding:clamp(48px,6vw,80px);display:flex;flex-direction:column;justify-content:center}
+.about-text{background:rgba(18,17,12,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:clamp(48px,6vw,80px);display:flex;flex-direction:column;justify-content:center}
 .about-eyebrow{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .about h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:300;font-style:italic;color:var(--cream);margin-bottom:28px;line-height:1.15}
 .about p{font-family:var(--sans);font-size:14px;font-weight:300;color:var(--cream-dim);line-height:1.85;margin-bottom:18px}
-.about-img{background:rgba(15,14,10,0.92);min-height:400px;position:relative}
+.about-img{background:transparent;min-height:400px;position:relative}
 
 /* ═══ EVENTS ═══ */
 .events{position:relative;z-index:1;overflow:hidden}
-.events-photo{height:280px;background:linear-gradient(to bottom,rgba(15,14,10,0.05) 0%,rgba(15,14,10,0.95) 100%);position:relative}
-.events-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,14,10,.3),rgba(15,14,10,.85))}
-.events-content{background:var(--bg);padding:clamp(48px,6vw,80px) clamp(32px,5vw,80px)}
+.events-photo{display:none}
+.events-content{background:rgba(15,14,10,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:clamp(48px,6vw,80px) clamp(32px,5vw,80px);margin:40px;border-radius:4px;border:1px solid rgba(196,162,101,.06)}
 .events h2{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:300;font-style:italic;color:var(--cream);margin-bottom:12px;text-align:center}
 .events-sub{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--cream-dim);text-align:center;margin-bottom:48px;font-weight:300}
 .events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1000px;margin:0 auto 40px}
@@ -175,13 +174,13 @@ img{display:block;max-width:100%}
 .btn-secondary:hover{border-color:var(--gold-line);color:var(--cream-dim)}
 
 /* ═══ FOOTER ═══ */
-.site-footer{border-top:1px solid var(--border);padding:52px 32px;text-align:center;background:var(--bg);position:relative;z-index:1}
+.site-footer{border-top:1px solid rgba(196,162,101,.08);padding:52px 32px;text-align:center;background:rgba(15,14,10,.75);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;z-index:1}
 .footer-brand{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--cream-dim);margin-bottom:10px;letter-spacing:.3px}
 .footer-brand em{font-style:italic;color:var(--gold)}
 .footer-addr{font-size:10px;font-weight:300;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;line-height:2}
 
 /* ═══ JOIN SECTION ═══ */
-.join-section{background:var(--warm-dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1}
+.join-section{background:rgba(18,17,12,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(196,162,101,.08);border-bottom:1px solid rgba(196,162,101,.08);position:relative;z-index:1}
 .join-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:500px}
 @media(max-width:800px){.join-inner{grid-template-columns:1fr}}
 .join-text{padding:clamp(48px,6vw,80px);display:flex;flex-direction:column;justify-content:center}
@@ -226,7 +225,7 @@ img{display:block;max-width:100%}
 </section>
 
 <!-- Bridge divider -->
-<div style="background:var(--bg);padding:32px 0;text-align:center;overflow:hidden;position:relative;z-index:1">
+<div style="background:transparent;padding:32px 0;text-align:center;overflow:hidden;position:relative;z-index:1">
   <svg viewBox="0 0 1200 80" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:min(90%,900px);height:60px;color:var(--gold);opacity:.12" preserveAspectRatio="xMidYMid meet">
     <rect x="0" y="68" width="1200" height="4" fill="currentColor"/>
     <rect x="330" y="10" width="18" height="62" fill="currentColor"/><polygon points="330,10 339,0 348,10" fill="currentColor"/>
@@ -292,7 +291,7 @@ img{display:block;max-width:100%}
 </section>
 
 <!-- ═══ DIRECTORY CTA ═══ -->
-<section style="background:var(--bg);position:relative;z-index:1;padding:80px 32px;text-align:center;border-top:1px solid var(--border)">
+<section style="background:rgba(15,14,10,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);position:relative;z-index:1;padding:80px 32px;text-align:center;border-top:1px solid rgba(196,162,101,.08)">
   <h2 style="font-family:var(--serif);font-size:clamp(24px,3.5vw,38px);font-weight:300;font-style:italic;color:var(--cream);margin-bottom:12px">Ready to connect?</h2>
   <p style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--cream-dim);margin-bottom:32px;font-weight:300">Browse the full directory of DUMBO's creative community.</p>
   <a href="directory.html" class="events-cta" style="display:inline-block">Enter the Directory</a>
@@ -315,13 +314,14 @@ img{display:block;max-width:100%}
   mapboxgl.accessToken='pk.eyJ1IjoidW5kZXJzY29yZXdheW5lIiwiYSI6ImNtbjZwaDh5bDA4N3kycnEzeWYzczJmazcifQ.ZHe2DQ5G6NyST3H2gAJu4A';
 
   const DUMBO={lng:-73.9894,lat:40.7033};
-  /* Start: zoomed in tight, street-level angle */
-  var START_ZOOM=17.2;
-  var END_ZOOM=14.8;
-  var START_PITCH=72;
-  var END_PITCH=50;
+  /* Start: zoomed in tight, street-level immersion */
+  /* End: dramatic overhead looking straight down at the full neighborhood */
+  var START_ZOOM=17.5;
+  var END_ZOOM=15.0;
+  var START_PITCH=75;
+  var END_PITCH=0;
   var START_BEARING=-10;
-  var END_BEARING=35;
+  var END_BEARING=60;
 
   const map=new mapboxgl.Map({
     container:'map-container',
@@ -407,8 +407,8 @@ img{display:block;max-width:100%}
     var pitch=START_PITCH+(END_PITCH-START_PITCH)*ease;
     /* Bearing: rotate 45 degrees as we pull back */
     var bearing=START_BEARING+(END_BEARING-START_BEARING)*ease;
-    /* Building opacity: start subtle, get more prominent as you pull back */
-    buildingOpacity=0.1+(ease*0.5);
+    /* Building opacity: start barely visible, end fully prominent for the overhead reveal */
+    buildingOpacity=0.06+(ease*0.65);
 
     map.jumpTo({bearing:bearing,zoom:zoom,pitch:pitch});
 
