@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -33,31 +35,13 @@ img{display:block;max-width:100%}
 .nav-login{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);padding:10px 28px;border:1px solid var(--gold-line);border-radius:50px;transition:all .3s;pointer-events:all;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(15,14,10,.5)}
 .nav-login:hover{background:rgba(196,162,101,.1);border-color:var(--gold);color:var(--cream);opacity:1}
 
-/* ═══ BRONZE MAP ═══ */
-.bronze-map{position:fixed;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;perspective:1200px}
-.bronze-map svg{width:min(100vw,1400px);height:auto;transform:rotateX(12deg) scale(1.1);transform-origin:center 60%;transition:opacity 1.2s cubic-bezier(.25,.46,.45,.94)}
-.bronze-map .map-streets{opacity:0;transition:opacity 1.4s ease .1s}
-.bronze-map .map-bridges{opacity:0;transition:opacity 1.4s ease .3s}
-.bronze-map .map-waterfront{opacity:0;transition:opacity 1.4s ease .5s}
-.bronze-map .map-buildings{opacity:0;transition:opacity 1.4s ease .7s}
-.bronze-map .map-contours{opacity:0;transition:opacity 1.4s ease .2s}
-.bronze-map .map-marker{opacity:0;transition:opacity 1.4s ease .9s}
-.bronze-map.reveal-1 .map-contours{opacity:1}
-.bronze-map.reveal-1 .map-streets{opacity:1}
-.bronze-map.reveal-2 .map-bridges{opacity:1}
-.bronze-map.reveal-2 .map-contours{opacity:1}
-.bronze-map.reveal-2 .map-streets{opacity:1}
-.bronze-map.reveal-3 .map-waterfront{opacity:1}
-.bronze-map.reveal-3 .map-bridges{opacity:1}
-.bronze-map.reveal-3 .map-contours{opacity:1}
-.bronze-map.reveal-3 .map-streets{opacity:1}
-.bronze-map.reveal-4 .map-buildings{opacity:1}
-.bronze-map.reveal-4 .map-marker{opacity:1}
-.bronze-map.reveal-4 .map-waterfront{opacity:1}
-.bronze-map.reveal-4 .map-bridges{opacity:1}
-.bronze-map.reveal-4 .map-contours{opacity:1}
-.bronze-map.reveal-4 .map-streets{opacity:1}
-.map-glow{filter:drop-shadow(0 0 6px rgba(196,162,101,.3))}
+/* ═══ MAPBOX MAP ═══ */
+#map-container{position:fixed;inset:0;z-index:0;pointer-events:none}
+#map-container .mapboxgl-canvas{display:block}
+.mapboxgl-ctrl-logo,.mapboxgl-ctrl-attrib{display:none!important}
+/* marker glow */
+.marker-pulse{width:14px;height:14px;border-radius:50%;background:#C4A265;box-shadow:0 0 0 4px rgba(196,162,101,.25),0 0 18px 6px rgba(196,162,101,.35);animation:markerPulse 2.4s ease infinite}
+@keyframes markerPulse{0%,100%{box-shadow:0 0 0 4px rgba(196,162,101,.25),0 0 18px 6px rgba(196,162,101,.35)}50%{box-shadow:0 0 0 8px rgba(196,162,101,.12),0 0 28px 10px rgba(196,162,101,.25)}}
 
 /* ═══ HERO ═══ */
 .hero{position:relative;z-index:1;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -225,162 +209,8 @@ img{display:block;max-width:100%}
   <a href="directory.html" class="nav-login">Members Login</a>
 </nav>
 
-<!-- ═══ BRONZE ELEVATION MAP ═══ -->
-<div class="bronze-map" id="bronzeMap">
-<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" fill="none">
-<defs>
-  <filter id="gBr"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  <filter id="gMk"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<!-- CONTOURS: topographic elevation + reference grid -->
-<g class="map-contours" stroke="#C4A265" fill="none">
-  <path d="M0,490 Q125,478 250,485 Q375,492 500,480 Q625,468 750,476 Q875,484 1000,474" stroke-width=".4"/>
-  <path d="M0,540 Q150,528 300,536 Q450,543 600,530 Q750,518 900,526 Q1000,522 1000,522" stroke-width=".4"/>
-  <path d="M0,590 Q200,578 400,586 Q600,594 800,580 Q930,572 1000,576" stroke-width=".4"/>
-  <line x1="100" y1="148" x2="100" y2="540" stroke-width=".22" stroke-opacity=".45"/>
-  <line x1="280" y1="148" x2="280" y2="540" stroke-width=".22" stroke-opacity=".45"/>
-  <line x1="370" y1="148" x2="370" y2="540" stroke-width=".22" stroke-opacity=".45"/>
-  <line x1="460" y1="148" x2="460" y2="430" stroke-width=".22" stroke-opacity=".45"/>
-  <line x1="570" y1="148" x2="570" y2="490" stroke-width=".22" stroke-opacity=".45"/>
-  <line x1="0" y1="210" x2="1000" y2="210" stroke-width=".18" stroke-opacity=".38"/>
-  <line x1="0" y1="270" x2="1000" y2="270" stroke-width=".18" stroke-opacity=".38"/>
-  <line x1="0" y1="335" x2="1000" y2="335" stroke-width=".18" stroke-opacity=".38"/>
-  <line x1="0" y1="400" x2="1000" y2="400" stroke-width=".18" stroke-opacity=".38"/>
-</g>
-<!-- WATERFRONT: East River edge and piers -->
-<g class="map-waterfront" stroke="#C4A265" fill="none">
-  <line x1="0" y1="28" x2="1000" y2="28" stroke-width=".28" stroke-opacity=".55"/>
-  <line x1="0" y1="52" x2="1000" y2="52" stroke-width=".28" stroke-opacity=".5"/>
-  <line x1="0" y1="76" x2="1000" y2="76" stroke-width=".28" stroke-opacity=".5"/>
-  <line x1="0" y1="100" x2="1000" y2="100" stroke-width=".28" stroke-opacity=".5"/>
-  <line x1="0" y1="124" x2="1000" y2="124" stroke-width=".28" stroke-opacity=".5"/>
-  <path d="M80,40 Q160,34 240,42 Q320,50 400,36 Q480,24 560,38" stroke-width=".28" stroke-opacity=".4"/>
-  <path d="M40,85 Q200,77 360,86 Q520,95 680,82 Q840,70 1000,80" stroke-width=".28" stroke-opacity=".4"/>
-  <path d="M0,148 Q125,136 250,145 Q375,154 500,140 Q625,128 750,138 Q875,148 1000,136" stroke-width="1.6"/>
-  <path d="M0,155 Q125,144 250,152 Q375,160 500,148 Q625,136 750,145 Q875,154 1000,143" stroke-width=".45" stroke-opacity=".5"/>
-  <rect x="180" y="118" width="68" height="26" stroke-width=".85"/>
-  <rect x="338" y="110" width="52" height="32" stroke-width=".85"/>
-  <rect x="468" y="116" width="40" height="24" stroke-width=".7"/>
-  <line x1="193" y1="118" x2="193" y2="144" stroke-width=".35"/>
-  <line x1="210" y1="118" x2="210" y2="144" stroke-width=".35"/>
-  <line x1="226" y1="118" x2="226" y2="144" stroke-width=".35"/>
-  <line x1="352" y1="110" x2="352" y2="142" stroke-width=".35"/>
-  <line x1="368" y1="110" x2="368" y2="142" stroke-width=".35"/>
-  <line x1="481" y1="116" x2="481" y2="140" stroke-width=".35"/>
-</g>
-<!-- STREETS: DUMBO street grid (accurate to neighborhood) -->
-<g class="map-streets" stroke="#C4A265" fill="none" stroke-width=".85">
-  <line x1="78" y1="210" x2="546" y2="210"/>
-  <line x1="670" y1="210" x2="815" y2="210"/>
-  <line x1="74" y1="270" x2="735" y2="270"/>
-  <line x1="72" y1="335" x2="716" y2="335"/>
-  <line x1="72" y1="400" x2="692" y2="400"/>
-  <line x1="72" y1="462" x2="670" y2="462"/>
-  <line x1="72" y1="522" x2="650" y2="522"/>
-  <line x1="100" y1="148" x2="100" y2="545"/>
-  <line x1="280" y1="148" x2="280" y2="538"/>
-  <line x1="370" y1="148" x2="370" y2="530" stroke-width="1.15"/>
-  <line x1="460" y1="154" x2="460" y2="422"/>
-  <line x1="570" y1="148" x2="570" y2="478"/>
-  <line x1="546" y1="210" x2="563" y2="148"/>
-</g>
-<!-- BUILDINGS: warehouse and loft footprints -->
-<g class="map-buildings" stroke="#C4A265" fill="none" stroke-width=".55">
-  <rect x="291" y="218" width="62" height="44"/>
-  <line x1="291" y1="232" x2="353" y2="232" stroke-width=".28"/>
-  <line x1="291" y1="246" x2="353" y2="246" stroke-width=".28"/>
-  <rect x="381" y="218" width="64" height="44"/>
-  <line x1="381" y1="234" x2="445" y2="234" stroke-width=".28"/>
-  <rect x="291" y="278" width="62" height="49"/>
-  <rect x="381" y="278" width="64" height="49" stroke-width=".95"/>
-  <line x1="381" y1="295" x2="445" y2="295" stroke-width=".28"/>
-  <line x1="381" y1="311" x2="445" y2="311" stroke-width=".28"/>
-  <rect x="291" y="343" width="62" height="48"/>
-  <rect x="381" y="343" width="64" height="48"/>
-  <rect x="471" y="218" width="82" height="44"/>
-  <line x1="471" y1="232" x2="553" y2="232" stroke-width=".28"/>
-  <rect x="112" y="218" width="152" height="44"/>
-  <line x1="112" y1="232" x2="264" y2="232" stroke-width=".28"/>
-  <line x1="173" y1="218" x2="173" y2="262" stroke-width=".35"/>
-  <line x1="218" y1="218" x2="218" y2="262" stroke-width=".35"/>
-  <rect x="112" y="278" width="152" height="49"/>
-  <line x1="173" y1="278" x2="173" y2="327" stroke-width=".35"/>
-  <rect x="112" y="343" width="152" height="48"/>
-  <rect x="291" y="408" width="62" height="46"/>
-  <rect x="381" y="408" width="64" height="46"/>
-  <rect x="112" y="408" width="152" height="46"/>
-</g>
-<!-- BRIDGES: Manhattan Bridge (dominant) + Brooklyn Bridge (secondary) -->
-<g class="map-bridges" stroke="#C4A265" fill="none">
-  <line x1="50" y1="205" x2="1000" y2="108" stroke-width="1.45" filter="url(#gBr)"/>
-  <line x1="50" y1="213" x2="1000" y2="116" stroke-width=".55" stroke-opacity=".5"/>
-  <path d="M546,210 Q557,183 563,148" stroke-width=".95"/>
-  <rect x="556" y="40" width="19" height="170" stroke-width="1.75" filter="url(#gBr)"/>
-  <path d="M556,40 Q565,25 574,40" stroke-width="1.75"/>
-  <path d="M559,43 Q565,34 571,43" stroke-width=".65"/>
-  <line x1="556" y1="73" x2="575" y2="73" stroke-width=".75"/>
-  <line x1="556" y1="106" x2="575" y2="106" stroke-width=".75"/>
-  <line x1="556" y1="139" x2="575" y2="139" stroke-width=".75"/>
-  <line x1="556" y1="172" x2="575" y2="172" stroke-width=".55"/>
-  <path d="M559,45 Q565,37 571,45 L571,56 Q565,51 559,56 Z" stroke-width=".45"/>
-  <path d="M559,60 Q565,52 571,60 L571,71 Q565,66 559,71 Z" stroke-width=".45"/>
-  <rect x="618" y="76" width="16" height="143" stroke-width="1.45" filter="url(#gBr)"/>
-  <path d="M618,76 Q626,62 634,76" stroke-width="1.45"/>
-  <line x1="618" y1="106" x2="634" y2="106" stroke-width=".65"/>
-  <line x1="618" y1="136" x2="634" y2="136" stroke-width=".65"/>
-  <path d="M620,79 Q626,71 632,79 L632,89 Q626,84 620,89 Z" stroke-width=".45"/>
-  <path d="M565,40 Q780,8 1000,22" stroke-width="1.25"/>
-  <path d="M565,40 Q458,93 370,148 Q268,205 198,210" stroke-width="1.05" stroke-opacity=".8"/>
-  <path d="M565,40 Q591,56 626,76" stroke-width=".85"/>
-  <g stroke-width=".48" stroke-opacity=".8">
-    <line x1="688" y1="29" x2="681" y2="111"/>
-    <line x1="758" y1="22" x2="752" y2="105"/>
-    <line x1="828" y1="17" x2="824" y2="100"/>
-    <line x1="898" y1="15" x2="895" y2="97"/>
-    <line x1="960" y1="14" x2="958" y2="95"/>
-  </g>
-  <g stroke-width=".48" stroke-opacity=".7">
-    <line x1="522" y1="56" x2="522" y2="210"/>
-    <line x1="490" y1="70" x2="488" y2="210"/>
-    <line x1="458" y1="85" x2="455" y2="210"/>
-    <line x1="426" y1="101" x2="422" y2="210"/>
-    <line x1="394" y1="117" x2="390" y2="210"/>
-    <line x1="360" y1="135" x2="356" y2="210"/>
-    <line x1="326" y1="152" x2="321" y2="210"/>
-    <line x1="290" y1="168" x2="285" y2="210"/>
-    <line x1="256" y1="183" x2="250" y2="210"/>
-    <line x1="222" y1="197" x2="216" y2="210"/>
-  </g>
-  <g stroke-opacity=".48">
-    <line x1="-50" y1="260" x2="222" y2="260" stroke-width="1.1"/>
-    <line x1="-50" y1="267" x2="222" y2="267" stroke-width=".45"/>
-    <rect x="95" y="176" width="15" height="88" stroke-width="1.35"/>
-    <path d="M95,176 Q102,162 110,176" stroke-width="1.35"/>
-    <line x1="95" y1="203" x2="110" y2="203" stroke-width=".65"/>
-    <line x1="95" y1="230" x2="110" y2="230" stroke-width=".65"/>
-    <path d="M97,178 Q102,170 108,178 L108,188 Q102,183 97,188 Z" stroke-width=".45"/>
-    <path d="M102,164 Q55,118 -100,103" stroke-width=".95"/>
-    <path d="M102,164 Q158,207 222,260" stroke-width=".65" stroke-opacity=".4"/>
-    <g stroke-width=".38" stroke-opacity=".7">
-      <line x1="58" y1="130" x2="58" y2="260"/>
-      <line x1="38" y1="118" x2="38" y2="260"/>
-      <line x1="168" y1="195" x2="168" y2="260"/>
-      <line x1="198" y1="238" x2="198" y2="260"/>
-    </g>
-  </g>
-</g>
-<!-- 55 WASHINGTON MARKER: glowing pin at 55 Washington St -->
-<g class="map-marker map-glow" filter="url(#gMk)">
-  <circle cx="370" cy="298" r="20" stroke="#C4A265" stroke-width=".65" stroke-opacity=".28" fill="none"/>
-  <circle cx="370" cy="298" r="11" stroke="#C4A265" stroke-width="1.15" stroke-opacity=".58" fill="none"/>
-  <circle cx="370" cy="298" r="3.5" fill="#C4A265" fill-opacity=".78"/>
-  <line x1="370" y1="280" x2="370" y2="286" stroke="#C4A265" stroke-width=".95"/>
-  <line x1="370" y1="310" x2="370" y2="316" stroke="#C4A265" stroke-width=".95"/>
-  <line x1="352" y1="298" x2="358" y2="298" stroke="#C4A265" stroke-width=".95"/>
-  <line x1="382" y1="298" x2="388" y2="298" stroke="#C4A265" stroke-width=".95"/>
-</g>
-</svg>
-</div>
+<!-- ═══ MAPBOX 3D MAP ═══ -->
+<div id="map-container"></div>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
@@ -481,33 +311,104 @@ img{display:block;max-width:100%}
 </footer>
 
 <script>
-/* Bronze map scroll reveal — section-based with parallax */
 (function(){
-  const map=document.getElementById('bronzeMap');
-  if(!map)return;
-  const svg=map.querySelector('svg');
-  const sections=[
-    {el:document.querySelector('.about'),lvl:1},
-    {el:document.querySelector('.events'),lvl:2},
-    {el:document.querySelector('.join-section'),lvl:3},
-    {el:document.getElementById('directory'),lvl:4}
-  ];
-  let lastLvl=0;
-  function updateMap(){
-    const sy=window.scrollY;
-    const vh=window.innerHeight;
-    svg.style.transform='rotateX(12deg) scale(1.12) translateY('+(-(sy*0.022))+'px)';
-    let lvl=0;
-    sections.forEach(s=>{
-      if(s.el&&s.el.getBoundingClientRect().top<vh*0.88)lvl=s.lvl;
+  mapboxgl.accessToken='pk.eyJ1IjoidW5kZXJzY29yZXdheW5lIiwiYSI6ImNtbjZwaDh5bDA4N3kycnEzeWYzczJmazcifQ.ZHe2DQ5G6NyST3H2gAJu4A';
+
+  const DUMBO={lng:-73.9894,lat:40.7033};
+  const BASE_BEARING=-17;
+  const BASE_ZOOM=15.5;
+  const BASE_PITCH=60;
+
+  const map=new mapboxgl.Map({
+    container:'map-container',
+    style:'mapbox://styles/mapbox/dark-v11',
+    center:[DUMBO.lng,DUMBO.lat],
+    zoom:BASE_ZOOM,
+    pitch:BASE_PITCH,
+    bearing:BASE_BEARING,
+    antialias:true,
+    interactive:false
+  });
+
+  map.on('style.load',function(){
+    /* ── water colour ── */
+    map.setPaintProperty('water','fill-color','#0A0908');
+
+    /* ── land/background ── */
+    try{map.setPaintProperty('land','fill-color','#0F0E0A');}catch(e){}
+    try{map.setPaintProperty('background','background-color','#0F0E0A');}catch(e){}
+
+    /* ── dim all label layers ── */
+    map.getStyle().layers.forEach(function(l){
+      if(l.type==='symbol'){
+        try{
+          if(l.id.includes('road')||l.id.includes('street')||l.id.includes('path')){
+            map.setPaintProperty(l.id,'text-color','rgba(196,162,101,0.22)');
+            map.setPaintProperty(l.id,'text-halo-color','rgba(10,9,8,0.85)');
+            map.setPaintProperty(l.id,'text-halo-width',1);
+          } else {
+            map.setLayoutProperty(l.id,'visibility','none');
+          }
+        }catch(e){}
+      }
     });
-    if(lvl!==lastLvl){
-      map.className='bronze-map'+(lvl>0?' reveal-'+lvl:'');
-      lastLvl=lvl;
+
+    /* ── 3D buildings in bronze ── */
+    map.addLayer({
+      'id':'3d-buildings',
+      'source':'composite',
+      'source-layer':'building',
+      'filter':['==','extrude','true'],
+      'type':'fill-extrusion',
+      'minzoom':14,
+      'paint':{
+        'fill-extrusion-color':'#C4A265',
+        'fill-extrusion-height':['get','height'],
+        'fill-extrusion-base':['get','min_height'],
+        'fill-extrusion-opacity':0.15
+      }
+    });
+
+    /* ── 55 Washington Street marker ── */
+    const el=document.createElement('div');
+    el.className='marker-pulse';
+    new mapboxgl.Marker({element:el,anchor:'center'})
+      .setLngLat([DUMBO.lng,DUMBO.lat])
+      .addTo(map);
+  });
+
+  /* ── scroll-driven animation ── */
+  var ticking=false;
+  var buildingOpacity=0.15;
+
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(updateMap);
+      ticking=true;
     }
   }
-  window.addEventListener('scroll',updateMap,{passive:true});
-  updateMap();
+
+  function updateMap(){
+    ticking=false;
+    var scrollY=window.scrollY;
+    var maxScroll=document.body.scrollHeight-window.innerHeight;
+    var progress=maxScroll>0?Math.min(scrollY/maxScroll,1):0;
+
+    /* bearing drifts +20 deg over full scroll */
+    var bearing=BASE_BEARING+(progress*20);
+    /* zoom in slightly as you scroll */
+    var zoom=BASE_ZOOM+(progress*0.5);
+    /* building opacity rises from 0.15 to 0.55 */
+    buildingOpacity=0.15+(progress*0.4);
+
+    map.jumpTo({bearing:bearing,zoom:zoom});
+
+    if(map.getLayer('3d-buildings')){
+      map.setPaintProperty('3d-buildings','fill-extrusion-opacity',buildingOpacity);
+    }
+  }
+
+  window.addEventListener('scroll',onScroll,{passive:true});
 })();
 </script>
 </body>
