@@ -315,17 +315,21 @@ img{display:block;max-width:100%}
   mapboxgl.accessToken='pk.eyJ1IjoidW5kZXJzY29yZXdheW5lIiwiYSI6ImNtbjZwaDh5bDA4N3kycnEzeWYzczJmazcifQ.ZHe2DQ5G6NyST3H2gAJu4A';
 
   const DUMBO={lng:-73.9894,lat:40.7033};
-  const BASE_BEARING=-17;
-  const BASE_ZOOM=15.5;
-  const BASE_PITCH=60;
+  /* Start: zoomed in tight, street-level angle */
+  var START_ZOOM=17.2;
+  var END_ZOOM=14.8;
+  var START_PITCH=72;
+  var END_PITCH=50;
+  var START_BEARING=-10;
+  var END_BEARING=35;
 
   const map=new mapboxgl.Map({
     container:'map-container',
     style:'mapbox://styles/mapbox/dark-v11',
     center:[DUMBO.lng,DUMBO.lat],
-    zoom:BASE_ZOOM,
-    pitch:BASE_PITCH,
-    bearing:BASE_BEARING,
+    zoom:START_ZOOM,
+    pitch:START_PITCH,
+    bearing:START_BEARING,
     antialias:true,
     interactive:false
   });
@@ -394,14 +398,19 @@ img{display:block;max-width:100%}
     var maxScroll=document.body.scrollHeight-window.innerHeight;
     var progress=maxScroll>0?Math.min(scrollY/maxScroll,1):0;
 
-    /* bearing drifts +20 deg over full scroll */
-    var bearing=BASE_BEARING+(progress*20);
-    /* zoom in slightly as you scroll */
-    var zoom=BASE_ZOOM+(progress*0.5);
-    /* building opacity rises from 0.15 to 0.55 */
-    buildingOpacity=0.15+(progress*0.4);
+    /* Ease the progress for smoother feel */
+    var ease=progress<0.5?2*progress*progress:(1-Math.pow(-2*progress+2,2)/2);
 
-    map.jumpTo({bearing:bearing,zoom:zoom});
+    /* Zoom: start tight (17.2), pull back to wide (14.8) */
+    var zoom=START_ZOOM+(END_ZOOM-START_ZOOM)*ease;
+    /* Pitch: start steep street-level (72), ease to overview (50) */
+    var pitch=START_PITCH+(END_PITCH-START_PITCH)*ease;
+    /* Bearing: rotate 45 degrees as we pull back */
+    var bearing=START_BEARING+(END_BEARING-START_BEARING)*ease;
+    /* Building opacity: start subtle, get more prominent as you pull back */
+    buildingOpacity=0.1+(ease*0.5);
+
+    map.jumpTo({bearing:bearing,zoom:zoom,pitch:pitch});
 
     if(map.getLayer('3d-buildings')){
       map.setPaintProperty('3d-buildings','fill-extrusion-opacity',buildingOpacity);
